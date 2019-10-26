@@ -1,0 +1,99 @@
+<!-- Config file for the game -->
+
+<config>
+  <app>
+    <title>IronBorn</title>
+    <organization>UPC</organization>
+  </app>
+	
+  <renderer>
+    <vsync value="true"/>
+  </renderer>
+
+  <window>
+    <resolution width="1024" height="768" scale="1"/>
+    <fullscreen value="false"/>
+    <borderless value="false"/>
+    <resizable value="false"/>
+    <fullscreen_window value="false"/>
+  </window>
+
+  <scene>
+    <lvl_1 value="Map_1_real.tmx"/>
+    <lvl_2 value="Map_2_real.tmx"/>
+    <ms_lvl_1 value="audio/music/level_1.ogg"/>
+    <ms_lvl_2 value="audio/music/level_2.ogg"/>
+  </scene>
+
+  <player>
+    <fx_jump value="audio/fx/jump.wav"/>
+    <fx_landing value="audio/fx/landing.wav"/>
+    <gravity value="0.08f"/>
+    <negative_acc value="0.2f"/>
+    <max_y_speed value="5"/>
+    <max_speed_jump value="1.4f"/>
+    <max_x_speed value="2"/>
+    <initial_pos x="7" y="12"/>
+    <player_velocity x="0.08f" y="0.08f"/>
+    <player_collider width ="24" height="30"/>
+    <player_idle value="textures/knight/noBKG_KnightIdle_strip.png"/>
+    <player_run value="textures/knight/noBKG_KnightRun_strip.png"/>
+    <rolling_velocity value="3"/>
+    <collider_frame value="4"/>
+    <animations>
+      <idle speed ="0.1f" loop = "true">
+        <frame x="23" y="14" width="24" height="30"/>
+        <frame x="87" y="14" width="24" height="30"/>
+        <frame x="343" y="14" width="24" height="30"/>
+        <frame x="407" y="14" width="25" height="30"/>
+        <frame x="471" y="14" width="26" height="30"/>
+        <frame x="534" y="14" width="25" height="30"/>
+        <frame x="599" y="14" width="24" height="30"/>
+        <frame x="663" y="14" width="22" height="30"/>
+        <frame x="727" y="14" width="22" height="30"/>
+      </idle>
+      <run speed ="0.1f" loop ="true">
+        <frame x="42" y="15" width="25" height="29"/>
+        <frame x="140" y="14" width="25" height="30"/>
+        <frame x="236" y="15" width="27" height="29"/>
+        <frame x="333" y="16" width="30" height="28"/>
+        <frame x="427" y="15" width="29" height="29"/>
+        <frame x="524" y="14" width="25" height="30"/>
+        <frame x="618" y="15" width="25" height="29"/>
+        <frame x="713" y="16" width="25" height="28"/>
+      </run>
+      <jump speed ="0.06f" loop ="false">
+        <frame x="494" y="11" width="19" height="31"/>
+        <frame x="647" y="10" width="18" height="28"/>
+        <frame x="797" y="3" width="23" height="28"/>
+        <frame x="951" y="1" width="23" height="28"/>
+      </jump>
+      <fall speed ="0.06f" loop ="false">
+        <frame x="1107" y="3" width="19" height="27"/>
+        <frame x="1258" y="9" width="20" height="27"/>
+        <frame x="1407" y="11" width="20" height="28"/>
+      </fall>
+      <roll speed ="0.15f" loop ="false">
+        <frame x="236" y="15" width="22" height="29"/>
+        <frame x="421" y="15" width="23" height="29"/>
+        <frame x="602" y="15" width="26" height="29"/>
+        <frame x="785" y="15" width="26" height="29"/>
+        <frame x="984" y="15" width="17" height="29"/>
+        <frame x="1180" y="15" width="21" height="29"/>
+        <frame x="1375" y="15" width="22" height="29"/>
+        <frame x="1564" y="15" width="20" height="29"/>
+        <frame x="1751" y="15" width="22" height="29"/>
+        <frame x="1935" y="15" width="22" height="29"/>
+      </roll>
+    </animations>
+  </player>
+  
+  <file_system>
+    <path>data.zip</path>
+  </file_system>
+
+  <map>
+    <folder>maps/</folder>
+  </map>
+
+</config>

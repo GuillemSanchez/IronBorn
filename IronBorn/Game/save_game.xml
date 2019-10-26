@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<game_state>
+	<input />
+	<window />
+	<textures />
+	<audio />
+	<map />
+	<player>
+		<player_numbers position_x="268" position_y="625" velocity_x="0" velocity_y="0" acceleration_x="0" acceleration_y="0" stack_x="0.719999671" stack_y="0" />
+		<player_bools jump_ava="true" />
+	</player>
+	<scene>
+		<scene_player lvl_current="LVL_2" />
+	</scene>
+	<collisions />
+	<fade />
+	<renderer>
+		<camera x="0" y="0" />
+	</renderer>
+</game_state>
