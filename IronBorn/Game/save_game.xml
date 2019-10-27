@@ -6,7 +6,7 @@
 	<audio />
 	<map />
 	<player>
-		<player_numbers position_x="36" position_y="478" velocity_x="2" velocity_y="-1.50000179" acceleration_x="0.100000001" acceleration_y="0" stack_x="0" stack_y="-1.50000179" />
+		<player_numbers position_x="179" position_y="547" velocity_x="0" velocity_y="0.49999842" acceleration_x="0.100000001" acceleration_y="0" stack_x="0" stack_y="1.39998901" />
 		<player_bools jump_ava="false" />
 	</player>
 	<scene>

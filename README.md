@@ -23,7 +23,8 @@ Ironborn is a platformer game where you will have to use your skills and reflexe
 ### Debug Functions:
 
 - F1 Start from the very first level
-- F2 Sart from the beginning of the current level
+- F2 Sart from the second of the current level
+- F3 start from the beginning of the current level
 - F5 Save the current state
 - F6 Load the previous state
 - F9 View Colliders
