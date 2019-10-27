@@ -6,11 +6,11 @@
 	<audio />
 	<map />
 	<player>
-		<player_numbers position_x="268" position_y="625" velocity_x="0" velocity_y="0" acceleration_x="0" acceleration_y="0" stack_x="0.719999671" stack_y="0" />
-		<player_bools jump_ava="true" />
+		<player_numbers position_x="36" position_y="478" velocity_x="2" velocity_y="-1.50000179" acceleration_x="0.100000001" acceleration_y="0" stack_x="0" stack_y="-1.50000179" />
+		<player_bools jump_ava="false" />
 	</player>
 	<scene>
-		<scene_player lvl_current="LVL_2" />
+		<scene_player lvl_current="LVL_1" />
 	</scene>
 	<collisions />
 	<fade />

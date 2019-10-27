@@ -28,13 +28,13 @@
   <player>
     <fx_jump value="audio/fx/jump.wav"/>
     <fx_landing value="audio/fx/landing.wav"/>
-    <gravity value="0.08f"/>
+    <gravity value="0.1f"/>
     <negative_acc value="0.2f"/>
     <max_y_speed value="5"/>
     <max_speed_jump value="1.4f"/>
     <max_x_speed value="2"/>
     <initial_pos x="7" y="12"/>
-    <player_velocity x="0.08f" y="0.08f"/>
+    <player_velocity x="0.1f" y="0.1f"/>
     <player_collider width ="24" height="30"/>
     <player_idle value="textures/knight/noBKG_KnightIdle_strip.png"/>
     <player_run value="textures/knight/noBKG_KnightRun_strip.png"/>
