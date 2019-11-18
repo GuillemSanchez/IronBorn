@@ -16,7 +16,8 @@
 
 Entity_Player::Entity_Player(ENTITY_TYPE type, p2Point<int> pos, int index) : Entity(type, pos, index)
 {
-	position = pos;
+	i_position = pos;
+	App->manager->my_player = this;
 }
 
 Entity_Player::~Entity_Player()
@@ -26,27 +27,28 @@ Entity_Player::~Entity_Player()
 
 bool Entity_Player::Awake(pugi::xml_node & config)
 {
-	gravity = config.child("gravity").attribute("value").as_float();
-	max_y_speed = config.child("max_y_speed").attribute("value").as_int();
-	max_x_speed = config.child("max_x_speed").attribute("value").as_int();
-	i_position.x = config.child("initial_pos").attribute("x").as_int();
-	i_position.y = config.child("initial_pos").attribute("y").as_int();
-	pl_w_h.x = config.child("player_collider").attribute("width").as_int();
-	pl_w_h.y = config.child("player_collider").attribute("height").as_int();
-	collider_dislocation = config.child("collider_frame").attribute("value").as_int();
-	negative_acc.x = config.child("negative_acc").attribute("value").as_float();
-	negative_acc.y = config.child("negative_acc").attribute("value").as_float();
-	jump_power = config.child("max_speed_jump").attribute("value").as_float();
+	//we wanna have a node to the player
+	pugi::xml_node player_node = config.child("entity_player").child("player");
 
-	rolling_velocity = config.child("rolling_velocity").attribute("value").as_int();
-	player_velocity.x = config.child("player_velocity").attribute("x").as_float();
-	player_velocity.y = config.child("player_velocity").attribute("y").as_float();
+	gravity = player_node.child("gravity").attribute("value").as_float();
+	max_y_speed = player_node.child("max_y_speed").attribute("value").as_int();
+	max_x_speed = player_node.child("max_x_speed").attribute("value").as_int();
+	pl_w_h.x = player_node.child("player_collider").attribute("width").as_int();
+	pl_w_h.y = player_node.child("player_collider").attribute("height").as_int();
+	collider_dislocation = player_node.child("collider_frame").attribute("value").as_int();
+	negative_acc.x = player_node.child("negative_acc").attribute("value").as_float();
+	negative_acc.y = player_node.child("negative_acc").attribute("value").as_float();
+	jump_power = player_node.child("max_speed_jump").attribute("value").as_float();
 
-	fx_jump.create(config.child("fx_jump").attribute("value").as_string());
-	fx_landing.create(config.child("fx_landing").attribute("value").as_string());
+	rolling_velocity = player_node.child("rolling_velocity").attribute("value").as_int();
+	player_velocity.x = player_node.child("player_velocity").attribute("x").as_float();
+	player_velocity.y = player_node.child("player_velocity").attribute("y").as_float();
+
+	fx_jump.create(player_node.child("fx_jump").attribute("value").as_string());
+	fx_landing.create(player_node.child("fx_landing").attribute("value").as_string());
 
 
-	pugi::xml_node animations = config.child("animations");
+	pugi::xml_node animations = player_node.child("animations");
 
 	LoadAllAnimations(animations);
 
@@ -228,6 +230,7 @@ bool Entity_Player::CleanUp()
 	App->tex->UnLoad(player_idle);
 	App->tex->UnLoad(player_jump_fall);
 	App->tex->UnLoad(player_idle);
+	App->tex->UnLoad(player_rolling);
 	current_texture = nullptr;
 	//Textures --------------------------
 

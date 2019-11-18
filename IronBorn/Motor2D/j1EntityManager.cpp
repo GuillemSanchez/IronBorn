@@ -2,7 +2,7 @@
 
 j1EntityManager::j1EntityManager()
 {
-	name.create("Entity Manager");
+	name.create("manager");
 }
 
 j1EntityManager::~j1EntityManager()
@@ -16,8 +16,16 @@ void j1EntityManager::Init()
 
 bool j1EntityManager::Awake(pugi::xml_node & node)
 {
+	// First we wanna create the entities, then we will awake them.
+	p2Point<int> player_pos;
+	
+	pugi::xml_node player = node.child("entity_player");
+	player_pos.x = player.child("initial_pos").attribute("x").as_int();
+	player_pos.y = player.child("initial_pos").attribute("y").as_int();
 
+	CreateEntity(PLAYER, player_pos);
 
+	//Here we awake the entities.
 	for (int i = 0; i < Entities.count(); i++)
 	{
 		if (Entities[i]->active)
@@ -76,6 +84,13 @@ bool j1EntityManager::CleanUp()
 	return true;
 }
 
+void j1EntityManager::OnCollision(Collider * coll1, Collider * coll2)
+{
+	if (coll1->type == COLLIDER_PLAYER)
+		my_player->OnCollision(coll1, coll2);
+
+}
+
 void j1EntityManager::CreateEntity(ENTITY_TYPE type, p2Point<int> pos)
 {
 	Entity* Ent = nullptr;
@@ -86,6 +101,7 @@ void j1EntityManager::CreateEntity(ENTITY_TYPE type, p2Point<int> pos)
 	{
 	case PLAYER:
 		Ent = new Entity_Player(type, pos, current_index);
+		Ent->active = true;
 		break;
 	case NONE:
 
@@ -94,6 +110,11 @@ void j1EntityManager::CreateEntity(ENTITY_TYPE type, p2Point<int> pos)
 
 		break;
 	}
+
+	// Here we look if the entity have info or not
+	if (Ent != nullptr)
+		Entities.add(Ent);
+
 
 }
 

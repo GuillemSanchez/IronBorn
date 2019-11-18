@@ -6,6 +6,7 @@
 #include "p2List.h"
 #include "Entity.h"
 #include "Entity_player.h"
+#include "j1Collisions.h"
 
 
 class j1EntityManager : public j1Module
@@ -38,6 +39,8 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	void OnCollision(Collider*, Collider*);
+
 	// Module typical functions --------------------------------------
 
 	// Specific functions --------------------------------------------
@@ -48,11 +51,13 @@ public:
 
 	// Specific functions --------------------------------------------
 
+	Entity_Player* my_player = nullptr;
+
 private:
 
 	p2List<Entity*> Entities;   //List of entities.
 
-	Entity_Player* my_player = nullptr;
+	
 
 	
 	

@@ -11,6 +11,7 @@
 #include "j1Player.h"
 #include "j1Fade.h"
 #include "j1Collisions.h"
+#include "j1EntityManager.h"
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -65,9 +66,9 @@ bool j1Scene::PreUpdate()
 		swaping = false;
 
 	}
-	if (alive == false && App->fade->finished == true) 
+	if (alive == false && App->fade->finished == true && App->manager->my_player->active)
 	{
-		App->player->Start();
+		App->manager->my_player->Start();
 	}
 
 	if (current == LVL_1 && !playingMusic) {
@@ -126,16 +127,16 @@ bool j1Scene::Update(float dt)
 		SwapMaps(current);
 
 
-	if (App->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN && App->manager->my_player->active)
 	{
-		if (App->player->im_a_god)
-			App->player->im_a_god = false;
+		if (App->manager->my_player->im_a_god )
+			App->manager->my_player->im_a_god = false;
 		else
-			App->player->im_a_god = true;
+			App->manager->my_player->im_a_god = true;
 	}
 
-
-	player_position = App->player->GetPosition();
+	if (App->manager->my_player->active)
+		player_position = App->manager->my_player->GetPosition();
 
 	App->render->camera.x = -player_position.x + camera_out.x;
 
@@ -158,8 +159,8 @@ bool j1Scene::Update(float dt)
 	/*if (!swaping)*/
 	App->map->Draw();
 
-	if (alive)
-		App->player->Draw();
+	if (alive && App->manager->my_player->active)
+		App->manager->my_player->Draw();
 	
 	//LOG("Camera x: %i Camera y: %i", App->render->camera.w, App->render->camera.y);
 	////Title to position -------------------------------------------------------------------------------------------------------------------------
@@ -260,11 +261,11 @@ void j1Scene::InitialSwap()
 
 void j1Scene::OnCollision(Collider * c1, Collider * c2)
 {
-	if (!App->player->im_a_god)
+	if (!App->manager->my_player->im_a_god && App->manager->my_player->active)
 	{
 		if (c1->type == COLLIDER_DEATH)
 		{
-			App->player->CleanUp();
+			App->manager->my_player->CleanUp();
 			App->fade->FadeToBlack();
 		}
 
@@ -282,7 +283,8 @@ void j1Scene::OnCollision(Collider * c1, Collider * c2)
 
 void j1Scene::SwapMaps(LVL desired)
 {
-	App->player->CleanUp(); // first we eliminate the player
+	if (App->manager->my_player->active)
+		App->manager->my_player->CleanUp(); // first we eliminate the player
 	App->collisions->CleanUp(); // we clean the collider array.
 	App->fade->FadeToBlack(); // we fade to swap.
 	swaping = true;

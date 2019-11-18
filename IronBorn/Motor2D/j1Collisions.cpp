@@ -5,6 +5,7 @@
 #include "p2Defs.h"
 #include "p2Log.h"
 #include "j1Player.h"
+#include "j1EntityManager.h"
 
 j1Collisions::j1Collisions()
 {
@@ -65,7 +66,7 @@ bool j1Collisions::PreUpdate()
 	Collider* c2;
 
 
-	if (!App->player->JustLoaded) {
+	if (!App->manager->my_player->JustLoaded && App->manager->my_player->active) {
 		for (uint i = 0; i < MAX_COLLIDERS; ++i)
 		{
 			// skip empty colliders
@@ -94,8 +95,8 @@ bool j1Collisions::PreUpdate()
 			}
 		}
 	}
-
-	App->player->JustLoaded = false;
+	if(App->manager->my_player->active)
+		App->manager->my_player->JustLoaded = false;
 
 	return true;
 }
