@@ -11,6 +11,7 @@ j1EntityManager::~j1EntityManager()
 
 void j1EntityManager::Init()
 {
+
 }
 
 bool j1EntityManager::Awake(pugi::xml_node &)
@@ -43,11 +44,22 @@ bool j1EntityManager::CleanUp()
 	return false;
 }
 
-void j1EntityManager::CreateEntity(Entity_type type, p2Point<int> pos)
+void j1EntityManager::CreateEntity(ENTITY_TYPE type, p2Point<int> pos)
 {
+	Entity* Ent = nullptr;
 
+	switch (type)
+	{
+	case PLAYER:
 
+		break;
+	case NONE:
 
+		break;
+	default:
+
+		break;
+	}
 
 }
 

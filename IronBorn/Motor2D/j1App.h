@@ -17,6 +17,7 @@ class j1Map;
 class j1Player;
 class j1Collisions;
 class j1Fade;
+class j1EntityManager;
 
 
 class j1App
@@ -91,6 +92,7 @@ public:
 	j1Collisions*		collisions;
 	j1Player*			player;
 	j1Fade*				fade;
+	j1EntityManager*	manager;
 
 private:
 
