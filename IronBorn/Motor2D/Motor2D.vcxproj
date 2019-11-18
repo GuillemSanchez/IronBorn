@@ -136,6 +136,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Entity_player.cpp" />
     <ClCompile Include="j1Collisions.cpp" />
     <ClCompile Include="j1EntityManager.cpp" />
     <ClCompile Include="j1Fade.cpp" />
@@ -155,6 +156,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Entity_player.h" />
     <ClInclude Include="j1Collisions.h" />
     <ClInclude Include="j1EntityManager.h" />
     <ClInclude Include="j1Fade.h" />

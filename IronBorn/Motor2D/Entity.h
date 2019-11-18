@@ -1,8 +1,9 @@
 #ifndef __ENTITY_H__
 #define __ENTITY_H__
 
-#include "j1EntityManager.h"
+
 #include "p2Point.h"
+
 
 
 enum ENTITY_TYPE
@@ -22,47 +23,48 @@ public:
 	~Entity(){}
 
 
-	//// Called before render is available
-	//virtual bool Awake(pugi::xml_node&)
-	//{
-	//	return true;
-	//}
+	// Called before render is available
+	virtual bool Awake(pugi::xml_node&)
+	{
+		return true;
+	}
 
-	//// Called before the first frame
-	//virtual bool Start()
-	//{
-	//	return true;
-	//}
+	// Called before the first frame
+	virtual bool Start()
+	{
+		return true;
+	}
 
-	//// Called each loop iteration
-	//virtual bool PreUpdate()
-	//{
-	//	return true;
-	//}
+	// Called each loop iteration
+	virtual bool PreUpdate()
+	{
+		return true;
+	}
 
-	//// Called each loop iteration
-	//virtual bool Update(float dt)
-	//{
-	//	return true;
-	//}
+	// Called each loop iteration
+	virtual bool Update(float dt)
+	{
+		return true;
+	}
 
-	//// Called each loop iteration
-	//virtual bool PostUpdate()
-	//{
-	//	return true;
-	//}
+	// Called each loop iteration
+	virtual bool PostUpdate()
+	{
+		return true;
+	}
 
-	//// Called before quitting
-	//virtual bool CleanUp()
-	//{
-	//	return true;
-	//}
-	////variables
+	// Called before quitting
+	virtual bool CleanUp()
+	{
+		return true;
+	}
+	//variables
 
 public:
 
 	int my_index;
 	ENTITY_TYPE my_type;
+	bool active = false;
 };
 
 

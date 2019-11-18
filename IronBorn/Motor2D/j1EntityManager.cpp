@@ -14,44 +14,78 @@ void j1EntityManager::Init()
 
 }
 
-bool j1EntityManager::Awake(pugi::xml_node &)
+bool j1EntityManager::Awake(pugi::xml_node & node)
 {
-	return false;
+
+
+	for (int i = 0; i < Entities.count(); i++)
+	{
+		if (Entities[i]->active)
+			Entities[i]->Awake(node);
+	}
+	return true;
 }
 
 bool j1EntityManager::Start()
 {
-	return false;
+	for (int i = 0; i < Entities.count(); i++)
+	{
+		if (Entities[i]->active)
+			Entities[i]->Start();
+	}
+	return true;
 }
 
 bool j1EntityManager::PreUpdate()
 {
-	return false;
+	for (int i = 0; i < Entities.count(); i++)
+	{
+		if (Entities[i]->active)
+			Entities[i]->PreUpdate();
+	}
+	return true;
 }
 
 bool j1EntityManager::Update(float dt)
 {
-	return false;
+	for (int i = 0; i < Entities.count(); i++)
+	{
+		if (Entities[i]->active)
+			Entities[i]->Update(dt);
+	}
+	return true;
 }
 
 bool j1EntityManager::PostUpdate()
 {
-	return false;
+	for (int i = 0; i < Entities.count(); i++)
+	{
+		if (Entities[i]->active)
+			Entities[i]->PostUpdate();
+	}
+	return true;
 }
 
 bool j1EntityManager::CleanUp()
 {
-	return false;
+	for (int i = 0; i < Entities.count(); i++)
+	{
+		if (Entities[i]->active)
+			Entities[i]->CleanUp();
+	}
+	return true;
 }
 
 void j1EntityManager::CreateEntity(ENTITY_TYPE type, p2Point<int> pos)
 {
 	Entity* Ent = nullptr;
 
+	int current_index = Entities.count(); //We will have index to control ours entities
+
 	switch (type)
 	{
 	case PLAYER:
-
+		Ent = new Entity_Player(type, pos, current_index);
 		break;
 	case NONE:
 

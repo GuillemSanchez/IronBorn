@@ -46,6 +46,9 @@
     <ClCompile Include="j1EntityManager.cpp">
       <Filter>Desenvolupament  ========\Modules\EntityManager</Filter>
     </ClCompile>
+    <ClCompile Include="Entity_player.cpp">
+      <Filter>Desenvolupament  ========\Modules\EntityManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -115,6 +118,9 @@
       <Filter>Desenvolupament  ========\Modules\EntityManager</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
+      <Filter>Desenvolupament  ========\Modules\EntityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity_player.h">
       <Filter>Desenvolupament  ========\Modules\EntityManager</Filter>
     </ClInclude>
   </ItemGroup>

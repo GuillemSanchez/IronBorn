@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "p2List.h"
 #include "Entity.h"
+#include "Entity_player.h"
 
 
 class j1EntityManager : public j1Module
@@ -51,19 +52,10 @@ private:
 
 	p2List<Entity*> Entities;   //List of entities.
 
+	Entity_Player* my_player = nullptr;
+
+	
 	
 };
-	
-
-
-
-
-
-
-
-
-
-
-
 
 #endif
