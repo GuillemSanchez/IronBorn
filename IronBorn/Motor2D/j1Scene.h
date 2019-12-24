@@ -69,6 +69,7 @@ private:
 
 public:
 
+	int player_lives = 3;
 	bool alive = false;
 };
 

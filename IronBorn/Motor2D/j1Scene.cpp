@@ -70,6 +70,10 @@ bool j1Scene::PreUpdate()
 	{
 		App->manager->my_player->Start();
 	}
+	if (player_lives <= 0)
+	{
+		return false;
+	}
 
 	if (current == LVL_1 && !playingMusic) {
 		App->audio->PlayMusic(map_1_music.GetString(), 0);

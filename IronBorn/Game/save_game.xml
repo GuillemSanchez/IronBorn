@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<game_state>
+	<input />
+	<window />
+	<textures />
+	<audio />
+	<map />
+	<manager />
+	<scene>
+		<scene_player lvl_current="LVL_1" />
+	</scene>
+	<collisions />
+	<fade />
+	<renderer>
+		<camera x="-105" y="0" />
+	</renderer>
+</game_state>
