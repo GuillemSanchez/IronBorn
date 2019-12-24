@@ -30,19 +30,19 @@
       <player>
         <fx_jump value="audio/fx/jump.wav"/>
         <fx_landing value="audio/fx/landing.wav"/>
-        <gravity value="0.1f"/>
-        <negative_acc value="0.2f"/>
-        <max_y_speed value="5"/>
-        <max_speed_jump value="1.4f"/>
-        <max_x_speed value="2"/>
-        <player_velocity x="0.1f" y="0.1f"/>
+        <gravity value="6"/>
+        <negative_acc value="8"/>
+        <max_y_speed value="250"/>
+        <max_speed_jump value="70"/>
+        <max_x_speed value="120"/>
+        <player_velocity x="4" y="4"/>
         <player_collider width ="24" height="30"/>
         <player_idle value="textures/knight/noBKG_KnightIdle_strip.png"/>
         <player_run value="textures/knight/noBKG_KnightRun_strip.png"/>
-        <rolling_velocity value="3"/>
+        <rolling_velocity value="200"/>
         <collider_frame value="4"/>
         <animations>
-          <idle speed ="0.1f" loop = "true">
+          <idle speed ="10" loop = "true">
             <frame x="23" y="14" width="24" height="30"/>
             <frame x="87" y="14" width="24" height="30"/>
             <frame x="343" y="14" width="24" height="30"/>
@@ -53,7 +53,7 @@
             <frame x="663" y="14" width="22" height="30"/>
             <frame x="727" y="14" width="22" height="30"/>
           </idle>
-          <run speed ="0.1f" loop ="true">
+          <run speed ="10" loop ="true">
             <frame x="42" y="15" width="25" height="29"/>
             <frame x="140" y="14" width="25" height="30"/>
             <frame x="236" y="15" width="27" height="29"/>
@@ -63,18 +63,18 @@
             <frame x="618" y="15" width="25" height="29"/>
             <frame x="713" y="16" width="25" height="28"/>
           </run>
-          <jump speed ="0.06f" loop ="false">
+          <jump speed ="5" loop ="false">
             <frame x="494" y="11" width="19" height="31"/>
             <frame x="647" y="10" width="18" height="28"/>
             <frame x="797" y="3" width="23" height="28"/>
             <frame x="951" y="1" width="23" height="28"/>
           </jump>
-          <fall speed ="0.06f" loop ="false">
+          <fall speed ="5" loop ="false">
             <frame x="1107" y="3" width="19" height="27"/>
             <frame x="1258" y="9" width="20" height="27"/>
             <frame x="1407" y="11" width="20" height="28"/>
           </fall>
-          <roll speed ="0.15f" loop ="false">
+          <roll speed ="15" loop ="false">
             <frame x="236" y="15" width="22" height="29"/>
             <frame x="421" y="15" width="23" height="29"/>
             <frame x="602" y="15" width="26" height="29"/>

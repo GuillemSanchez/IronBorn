@@ -203,8 +203,8 @@ bool Entity_Player::Update(float dt)
 	ChangetoCurrentAnimation();
 
 	// we use stacks to work under 1 pixel :D.
-	stack.x += velocity.x;
-	stack.y += velocity.y;
+	stack.x += velocity.x*dt;
+	stack.y += velocity.y*dt;
 	if (stack.x >= 1 || stack.x <= -1) {
 		position.x += stack.x;
 
@@ -240,9 +240,9 @@ bool Entity_Player::CleanUp()
 	return true;
 }
 
-void Entity_Player::Draw()
+void Entity_Player::Draw(float dt)
 {
-	r_current = current->GetCurrentFrame();
+	r_current = current->GetCurrentFrame(dt);
 
 	if (orientation_right)
 		App->render->Blit(current_texture, position.x, position.y, &r_current, 1);
@@ -269,7 +269,7 @@ void Entity_Player::OnCollision(Collider *player, Collider *colli)
 		{
 			if (velocity.y > 0) // we only want to put to zero if the velocity is positive because that means that we are falling.
 			{
-				if (velocity.y >= 1)
+				if (velocity.y >= max_y_speed/2)
 					App->audio->PlayFx(landing_fx, 0);
 				velocity.y = 0;
 			}

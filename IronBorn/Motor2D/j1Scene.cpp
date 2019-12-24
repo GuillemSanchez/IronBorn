@@ -160,7 +160,7 @@ bool j1Scene::Update(float dt)
 	App->map->Draw();
 
 	if (alive && App->manager->my_player->active)
-		App->manager->my_player->Draw();
+		App->manager->my_player->Draw(dt);
 	
 	//LOG("Camera x: %i Camera y: %i", App->render->camera.w, App->render->camera.y);
 	////Title to position -------------------------------------------------------------------------------------------------------------------------

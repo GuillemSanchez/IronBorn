@@ -255,6 +255,7 @@ bool j1App::DoUpdate()
 		}
 
 		ret = item->data->Update(dt);
+		//LOG("DT: %f", dt);
 	}
 
 	return ret;

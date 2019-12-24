@@ -36,7 +36,7 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	void Draw();
+	void Draw(float dt);
 
 	void OnCollision(Collider* player, Collider* colli);
 

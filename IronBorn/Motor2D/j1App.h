@@ -112,7 +112,7 @@ private:
 	p2SString			load_game;
 	mutable p2SString	save_game;
 
-	float dt; //utilizar el dt como multiplicador
+//	float dt; //utilizar el dt como multiplicador
 
 	j1PerfTimer			ptimer;
 	uint64				frame_count = 0;
