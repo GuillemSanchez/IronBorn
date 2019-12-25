@@ -89,6 +89,17 @@
         </animations>
       </player>
     </entity_player>
+    <entity_coin>
+      <animations>
+        <idle speed ="15" loop ="true">
+          <frame x="1" y="0" width="14" height="16"/>
+          <frame x="19" y="0" width="10" height="16"/>
+          <frame x="37" y="0" width="6" height="16"/>
+          <frame x="51" y="0" width="10" height="16"/>
+          <frame x="65" y="0" width="13" height="16"/>
+        </idle>
+      </animations>
+    </entity_coin>
   </manager>
   
   

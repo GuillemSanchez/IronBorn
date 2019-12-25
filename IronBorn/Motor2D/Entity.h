@@ -59,6 +59,11 @@ public:
 	{
 		return true;
 	}
+
+	virtual void Draw(float dt)
+	{
+
+	}
 	//variables
 
 public:

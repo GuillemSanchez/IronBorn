@@ -50,6 +50,8 @@ public:
 
 	void DestroyEntity(int index);
 
+	void DrawEnts(float dt);
+
 	// Specific functions --------------------------------------------
 
 	Entity_Player* my_player = nullptr;

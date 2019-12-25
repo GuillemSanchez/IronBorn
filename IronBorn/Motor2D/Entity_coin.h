@@ -32,6 +32,11 @@ public:
 
 public:
 
+	bool LoadAnimation(pugi::xml_node& config, Animation& anim);
+
+	bool LoadAllAnimations(pugi::xml_node& anima);
+
+
 	Animation *current = nullptr;
 	Animation IDLE;
 	SDL_Texture* coin_idle = nullptr;

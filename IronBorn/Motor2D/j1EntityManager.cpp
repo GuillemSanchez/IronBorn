@@ -1,4 +1,5 @@
 #include "j1EntityManager.h"
+#include "Entity_coin.h"
 
 j1EntityManager::j1EntityManager()
 {
@@ -24,6 +25,7 @@ bool j1EntityManager::Awake(pugi::xml_node & node)
 	player_pos.y = player.child("initial_pos").attribute("y").as_int();
 
 	CreateEntity(PLAYER, player_pos);
+	CreateEntity(COIN,	iPoint(30,30));
 
 	//Here we awake the entities.
 	for (int i = 0; i < Entities.count(); i++)
@@ -106,6 +108,10 @@ void j1EntityManager::CreateEntity(ENTITY_TYPE type, p2Point<int> pos)
 	case NONE:
 
 		break;
+	case COIN:
+		Ent = new Entity_coin(type, pos, current_index);
+		Ent->active = true;
+		break;
 	default:
 
 		break;
@@ -120,4 +126,17 @@ void j1EntityManager::CreateEntity(ENTITY_TYPE type, p2Point<int> pos)
 
 void j1EntityManager::DestroyEntity(int index)
 {
+}
+
+void j1EntityManager::DrawEnts(float dt)
+{
+	for (int i = 0; i < Entities.count(); i++)
+	{
+		if (Entities[i]->active)
+		{
+			if (Entities[i]->my_type != PLAYER)
+				Entities[i]->Draw(dt);
+		}
+			
+	}
 }
