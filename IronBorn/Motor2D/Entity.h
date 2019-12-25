@@ -9,6 +9,7 @@
 enum ENTITY_TYPE
 {
 	PLAYER,
+	COIN,
 	NONE
 };
 

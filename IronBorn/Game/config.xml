@@ -30,10 +30,10 @@
       <player>
         <fx_jump value="audio/fx/jump.wav"/>
         <fx_landing value="audio/fx/landing.wav"/>
-        <gravity value="6"/>
+        <gravity value="10"/>
         <negative_acc value="8"/>
         <max_y_speed value="250"/>
-        <max_speed_jump value="70"/>
+        <max_speed_jump value="200"/>
         <max_x_speed value="120"/>
         <player_velocity x="4" y="4"/>
         <player_collider width ="24" height="30"/>

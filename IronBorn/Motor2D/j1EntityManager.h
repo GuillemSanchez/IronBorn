@@ -6,6 +6,7 @@
 #include "p2List.h"
 #include "Entity.h"
 #include "Entity_player.h"
+#include "Entity_coin.h"
 #include "j1Collisions.h"
 
 
