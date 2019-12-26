@@ -52,13 +52,19 @@ public:
 
 	void DrawEnts(float dt);
 
+	Entity_coin* SearchTheCoin(iPoint pos);
+
 	// Specific functions --------------------------------------------
+
+	
 
 	Entity_Player* my_player = nullptr;
 
 private:
 
 	p2List<Entity*> Entities;   //List of entities.
+	p2List<Entity_coin*> Coins;
+
 
 	
 

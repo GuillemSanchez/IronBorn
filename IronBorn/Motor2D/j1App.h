@@ -20,6 +20,8 @@ class j1Player;
 class j1Collisions;
 class j1Fade;
 class j1EntityManager;
+class j1Fonts;
+class j1Gui;
 
 
 class j1App
@@ -95,6 +97,8 @@ public:
 	j1Player*			player;
 	j1Fade*				fade;
 	j1EntityManager*	manager;
+	j1Fonts*			font = NULL;
+	j1Gui*				gui = NULL;
 
 private:
 

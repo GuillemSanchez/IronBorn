@@ -152,6 +152,9 @@ void j1Collisions::DebugDraw()
 		case COLLIDER_WIN: // red
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 			break;
+		case COLLIDER_COIN: //Loraay
+			App->render->DrawQuad(colliders[i]->rect, 69, 7, 48, alpha);
+			break;
 		}
 	}
 }

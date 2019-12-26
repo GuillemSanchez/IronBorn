@@ -46,6 +46,8 @@ public:
 	p2Point<int> position;
 	p2Point<int> coin_w_h;
 	p2Point<int> oculted_pos;
+	
+	bool collected = false;
 };
 
 

@@ -3,6 +3,10 @@
 #include "j1Render.h"
 #include "j1Textures.h"
 #include "p2Log.h"
+#include "j1EntityManager.h"
+#include "j1Collisions.h"
+#include "j1Scene.h"
+
 
 
 Entity_coin::Entity_coin(ENTITY_TYPE type, p2Point<int> pos, int index) : Entity(type, pos, index)
@@ -18,6 +22,14 @@ Entity_coin::~Entity_coin()
 
 bool Entity_coin::Awake(pugi::xml_node & config)
 {
+
+	pugi::xml_node coin = config.child("entity_coin");
+
+	coin_w_h.x = coin.child("coin_w_h").attribute("w").as_int();
+	coin_w_h.y = coin.child("coin_w_h").attribute("h").as_int();
+	oculted_pos.x = coin.child("oculted_pos").attribute("x").as_int();
+	oculted_pos.y = coin.child("oculted_pos").attribute("y").as_int();
+
 	pugi::xml_node coin_node = config.child("entity_coin").child("animations");
 
 	LoadAllAnimations(coin_node);
@@ -33,6 +45,14 @@ void Entity_coin::Draw(float dt)
 bool Entity_coin::Start()
 {
 	coin_idle = App->tex->Load("Assets/MonedaD.png");
+	SDL_Rect colli;
+	colli.x = position.x;
+	colli.y = position.y;
+	colli.w = coin_w_h.x;
+	colli.h = coin_w_h.y;
+
+	coin_collider = App->collisions->AddCollider(colli, COLLIDER_COIN, App->manager);
+
 	return true;
 }
 
@@ -44,11 +64,19 @@ bool Entity_coin::Update(float dt)
 
 bool Entity_coin::CleanUp()
 {
+	App->tex->UnLoad(coin_idle);
+	coin_collider->to_delete = true;
+	active = false;
+
 	return true;
 }
 
 void Entity_coin::OnCollision(Collider * coin, Collider * colli)
 {
+	CleanUp();
+
+	App->scene->player_coins += 1;
+	LOG("Player got a coin");
 }
 
 bool Entity_coin::LoadAnimation(pugi::xml_node & config, Animation & anim)

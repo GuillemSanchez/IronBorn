@@ -25,7 +25,7 @@ bool j1EntityManager::Awake(pugi::xml_node & node)
 	player_pos.y = player.child("initial_pos").attribute("y").as_int();
 
 	CreateEntity(PLAYER, player_pos);
-	CreateEntity(COIN,	iPoint(30,30));
+	CreateEntity(COIN,	iPoint(80,30));
 
 	//Here we awake the entities.
 	for (int i = 0; i < Entities.count(); i++)
@@ -91,35 +91,49 @@ void j1EntityManager::OnCollision(Collider * coll1, Collider * coll2)
 	if (coll1->type == COLLIDER_PLAYER)
 		my_player->OnCollision(coll1, coll2);
 
+	
+	if (coll1->type == COLLIDER_COIN)
+	{
+		iPoint help;
+		help.x = coll1->rect.x;
+		help.y = coll1->rect.y;
+		Entity_coin* helper = SearchTheCoin(help);
+
+		helper->OnCollision(coll1, coll2);
+	}
+		
 }
 
 void j1EntityManager::CreateEntity(ENTITY_TYPE type, p2Point<int> pos)
 {
-	Entity* Ent = nullptr;
+	
 
 	int current_index = Entities.count(); //We will have index to control ours entities
-
+	Entity* Ent = nullptr;
+	Entity_coin* ent = nullptr;
 	switch (type)
 	{
 	case PLAYER:
+		
 		Ent = new Entity_Player(type, pos, current_index);
 		Ent->active = true;
+		Entities.add(Ent);
 		break;
 	case NONE:
 
 		break;
 	case COIN:
-		Ent = new Entity_coin(type, pos, current_index);
-		Ent->active = true;
+	
+		ent = new Entity_coin(type, pos, current_index);
+		ent->active = true;
+		Entities.add(ent);
+		Coins.add(ent);
 		break;
 	default:
 
 		break;
 	}
-
-	// Here we look if the entity have info or not
-	if (Ent != nullptr)
-		Entities.add(Ent);
+		
 
 
 }
@@ -139,4 +153,14 @@ void j1EntityManager::DrawEnts(float dt)
 		}
 			
 	}
+}
+
+Entity_coin * j1EntityManager::SearchTheCoin(iPoint pos)
+{
+	for (int i = 0; i < Coins.count(); i++)
+	{
+		if (Coins[i]->position == pos)
+			return Coins[i];
+	}
+	return nullptr;
 }

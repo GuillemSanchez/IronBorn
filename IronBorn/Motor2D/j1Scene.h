@@ -70,6 +70,7 @@ private:
 public:
 
 	int player_lives = 3;
+	int player_coins = 0;
 	bool alive = false;
 };
 

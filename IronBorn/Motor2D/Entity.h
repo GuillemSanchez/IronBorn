@@ -64,6 +64,11 @@ public:
 	{
 
 	}
+
+	virtual void SetPos(iPoint new_pos)
+	{
+
+	}
 	//variables
 
 public:

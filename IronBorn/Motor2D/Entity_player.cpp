@@ -304,6 +304,8 @@ void Entity_Player::OnCollision(Collider *player, Collider *colli)
 				velocity.x = 0;
 			position.x = colli->rect.x - pl_w_h.x;
 		}
+
+		
 	}
 }
 
