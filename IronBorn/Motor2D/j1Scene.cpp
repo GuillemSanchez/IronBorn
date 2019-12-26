@@ -18,6 +18,7 @@
 #include "Ui_element.h"
 #include "Ui_input_text.h"
 #include "Ui_image.h"
+#include "Ui_slidder.h"
 
 
 j1Scene::j1Scene() : j1Module()
@@ -346,6 +347,7 @@ void j1Scene::UI_listener(Ui_element * ele)
 	if (ele == return_button && ele->GetState() == ST_PRESSED)
 	{
 		DestroyCreditsmenu();
+		DestroySettingsMenu();
 		CreateInitalMenu();
 	}
 
@@ -393,8 +395,16 @@ void j1Scene::CreateSettingsMenu()
 {
 	SDL_Color BLACK = { 0,0,0,255 }; // Recuerda el orden de pintado
 
-	Sound_slidder = App->gui->CreateSlidder({ 290,50 }, this, true);
-	Music_slidder = App->gui->CreateSlidder({ 290,90 }, this, true);
+	image_background = App->gui->CreateImage({ 0,-10 }, App->gui->image_fo_2);
+	image_1_menu = App->gui->CreateImage({ 260,30 }, App->gui->image_fo);
+
+	Sound_text = App->gui->CreatenText({ 320,180 }, "Fxs:", 25, BLACK);
+	Sound_slidder = App->gui->CreateSlidder({ 320,220 }, this, true);
+
+	Sound_text = App->gui->CreatenText({ 320,280 }, "Music:", 25, BLACK);
+	Music_slidder = App->gui->CreateSlidder({ 320,320 }, this, true);
+
+	return_button = App->gui->CreateButton({ 530,600 }, "Return", this, 25, BLACK);
 }
 
 void j1Scene::DestroyInitialMenu()
@@ -443,7 +453,41 @@ void j1Scene::DestroyInitialMenu()
 
 void j1Scene::DestroySettingsMenu()
 {
-	
+	if (return_button != nullptr)
+	{
+		return_button->CleanUp();
+		return_button = nullptr;
+	}
+	if (image_1_menu != nullptr)
+	{
+		image_1_menu->CleanUp();
+		image_1_menu = nullptr;
+	}
+	if (image_background != nullptr)
+	{
+		image_background->CleanUp();
+		image_background = nullptr;
+	}
+	if (Sound_slidder != nullptr)
+	{
+		Sound_slidder->CleanUp();
+		Sound_slidder = nullptr;
+	}
+	if (Music_slidder != nullptr)
+	{
+		Music_slidder->CleanUp();
+		Music_slidder = nullptr;
+	}
+	if (Sound_text != nullptr)
+	{
+		Sound_text->CleanUp();
+		Sound_text = nullptr;
+	}
+	if (fx_text != nullptr)
+	{
+		fx_text->CleanUp();
+		fx_text = nullptr;
+	}
 }
 
 void j1Scene::DestroyCreditsmenu()
