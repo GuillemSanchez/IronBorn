@@ -391,7 +391,10 @@ void j1Scene::CreateCreditsMenu()
 
 void j1Scene::CreateSettingsMenu()
 {
-	
+	SDL_Color BLACK = { 0,0,0,255 }; // Recuerda el orden de pintado
+
+	Sound_slidder = App->gui->CreateSlidder({ 290,50 }, this, true);
+	Music_slidder = App->gui->CreateSlidder({ 290,90 }, this, true);
 }
 
 void j1Scene::DestroyInitialMenu()

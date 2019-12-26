@@ -25,8 +25,9 @@ private:
 
 	SDL_Rect on_pressed_;
 	SDL_Rect normal;
+	SDL_Rect on_hover;
 
-	int size_of_limits;
+	int size_of_limits = 0;
 
 	int min_pos;
 	int max_pos;

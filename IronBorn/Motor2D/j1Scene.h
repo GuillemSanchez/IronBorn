@@ -108,10 +108,17 @@ private:
 
 	Ui_image* image_background;
 
+	// Settings -----------------------------------
 	Ui_slidder* Music_slidder;
 
 	Ui_slidder* Sound_slidder;
 
+	Ui_ntext* Sound_text;
+	Ui_ntext* fx_text;
+
+	// Settings -----------------------------------
+
+	// Credits ------------------------------------
 	Ui_ntext* credits_text;
 	Ui_ntext* credits_text_1;
 	Ui_ntext* credits_text_2;
@@ -120,6 +127,7 @@ private:
 	Ui_ntext* credits_author;
 
 	Ui_button* return_button;
+	// Credits ------------------------------------
 
 	bool ini_menu = true;
 	bool ini_menu_created;

@@ -23,7 +23,7 @@ Ui_ntext::Ui_ntext(UI_type type, p2Point<int> pos, bool inter, p2SString text, i
 
 void Ui_ntext::CleanUp()
 {
-	App->tex->UnLoad(text_tex);
+	App->tex->UnLoad(text_tex); //fonts cause little memory leaks lol.
 }
 
 void Ui_ntext::Draw()

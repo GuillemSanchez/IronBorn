@@ -14,9 +14,10 @@ Ui_slidder::Ui_slidder(UI_type type, p2Point<int> pos, bool inter, j1Module * li
 
 	if (horizontal)
 	{
-		/*on_pressed_ = HORIZONTAL_SLIDDER_PRESSED;
-		normal = HORIZONTAL_SLIDDER_NORMAL;
-		slidder_alue = HORIZONTAL_SLIDDER_VAR;*/
+		on_pressed_ = App->gui->slidder_p;
+		normal = App->gui->slidder_n;
+		slidder_alue = App->gui->slidder_bar;
+		on_hover = App->gui->slidder_h;
 		//LOG("he llegado");
 	}
 	else
@@ -44,7 +45,7 @@ void Ui_slidder::PostUpdate()
 
 		if (m_pos.x >= min_pos && m_pos.x <= max_pos)
 		{
-			inter_zone.x = m_pos.x;
+			inter_zone.x = m_pos.x - normal.w/2;
 			dot.x = m_pos.x;
 		}
 	}
@@ -60,7 +61,22 @@ void Ui_slidder::PostUpdate()
 void Ui_slidder::Draw()
 {
 	App->render->Blit(atlas_tex, my_pos.x, my_pos.y, &slidder_alue, 0);
-	App->render->Blit(atlas_tex, dot.x, dot.y, &normal, 0);
+	if (mouse_ev == ST_HOVER)
+	{
+		App->render->Blit(atlas_tex, inter_zone.x, inter_zone.y, &on_hover, 0);
+	}
+
+	if (mouse_ev == ST_PRESSED || mouse_ev == ST_CONTINUE)
+	{
+		App->render->Blit(atlas_tex, inter_zone.x, inter_zone.y, &on_pressed_, 0);
+	}
+
+	if (mouse_ev == ST_NOTHING || mouse_ev == ST_UP)
+	{
+		App->render->Blit(atlas_tex, inter_zone.x, inter_zone.y, &normal, 0);
+	}
+	
+	
 }
 
 void Ui_slidder::CalculateLimits()
