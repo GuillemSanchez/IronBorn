@@ -67,6 +67,13 @@ public:
 	SDL_Rect slidder_p;
 	SDL_Rect image_fo;
 	SDL_Rect image_fo_2 = {44,954,1900,1023};
+	p2SString credits_1;
+	p2SString credits_2;
+	p2SString credits_3;
+	p2SString credits_4;
+	p2SString credits_5;
+	p2SString credits_6;
+
 
 
 private:

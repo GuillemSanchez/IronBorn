@@ -70,7 +70,12 @@ bool j1Gui::Awake(pugi::xml_node& conf)
 	image_fo.w = conf.child("image_fo").attribute("w").as_int();
 	image_fo.h = conf.child("image_fo").attribute("h").as_int();
 
-	
+	credits_1 = conf.child("credits_1").attribute("value").as_string();
+	credits_2 = conf.child("credits_2").attribute("value").as_string();
+	credits_3 = conf.child("credits_3").attribute("value").as_string();
+	credits_4 = conf.child("credits_4").attribute("value").as_string();
+	credits_5 = conf.child("credits_5").attribute("value").as_string();
+	credits_6 = conf.child("credits_6").attribute("value").as_string();
 
 	return ret;
 }

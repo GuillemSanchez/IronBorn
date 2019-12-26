@@ -63,9 +63,15 @@ public:
 
 	void CreateInitalMenu();
 
-	void CreateCreditsMeny();
+	void CreateCreditsMenu();
 
 	void CreateSettingsMenu();
+
+	void DestroyInitialMenu();
+
+	void DestroySettingsMenu();
+
+	void DestroyCreditsmenu();
 
 
 private:
@@ -105,6 +111,15 @@ private:
 	Ui_slidder* Music_slidder;
 
 	Ui_slidder* Sound_slidder;
+
+	Ui_ntext* credits_text;
+	Ui_ntext* credits_text_1;
+	Ui_ntext* credits_text_2;
+	Ui_ntext* credits_text_3;
+	Ui_ntext* credits_text_4;
+	Ui_ntext* credits_author;
+
+	Ui_button* return_button;
 
 	bool ini_menu = true;
 	bool ini_menu_created;

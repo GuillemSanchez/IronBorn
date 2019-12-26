@@ -321,46 +321,7 @@ void j1Scene::UI_listener(Ui_element * ele)
 {
 	if (ele == play_button && ele->GetState() == ST_PRESSED)
 	{
-		if (image_1_menu != nullptr)
-		{
-			image_1_menu->CleanUp();
-			image_1_menu = nullptr;
-		}
-		
-		if (play_button != nullptr)
-		{
-			play_button->CleanUp();
-			play_button = nullptr;
-		}
-		
-		if (quit_button != nullptr)
-		{
-			quit_button->CleanUp();
-			quit_button = nullptr;
-		}
-
-		if (credits_button != nullptr)
-		{
-			credits_button->CleanUp();
-			credits_button = nullptr;
-		}
-
-		if (settings_button != nullptr)
-		{
-			settings_button->CleanUp();
-			settings_button = nullptr;
-		}
-		if (continue_button != nullptr)
-		{
-			continue_button->CleanUp();
-			continue_button = nullptr;
-		}
-		if (image_background != nullptr)
-		{
-			image_background->CleanUp();
-			image_background = nullptr;
-		}
-		ini_menu = false;
+		DestroyInitialMenu();
 	}
 	if (ele == quit_button && ele->GetState() == ST_PRESSED)
 	{
@@ -369,110 +330,25 @@ void j1Scene::UI_listener(Ui_element * ele)
 
 	if (ele == continue_button && ele->GetState() == ST_PRESSED)
 	{
-		if (image_1_menu != nullptr)
-		{
-			image_1_menu->CleanUp();
-			image_1_menu = nullptr;
-		}
-
-		if (play_button != nullptr)
-		{
-			play_button->CleanUp();
-			play_button = nullptr;
-		}
-
-		if (quit_button != nullptr)
-		{
-			quit_button->CleanUp();
-			quit_button = nullptr;
-		}
-
-		if (credits_button != nullptr)
-		{
-			credits_button->CleanUp();
-			credits_button = nullptr;
-		}
-
-		if (settings_button != nullptr)
-		{
-			settings_button->CleanUp();
-			settings_button = nullptr;
-		}
-		if (continue_button != nullptr)
-		{
-			continue_button->CleanUp();
-			continue_button = nullptr;
-		}
-		if (image_background != nullptr)
-		{
-			image_background->CleanUp();
-			image_background = nullptr;
-		}
-		ini_menu = false;
+		DestroyInitialMenu();
 	}
 	
 	if (ele == credits_button && ele->GetState() == ST_PRESSED)
 	{
-		if (play_button != nullptr)
-		{
-			play_button->CleanUp();
-			play_button = nullptr;
-		}
-
-		if (quit_button != nullptr)
-		{
-			quit_button->CleanUp();
-			quit_button = nullptr;
-		}
-
-		if (credits_button != nullptr)
-		{
-			credits_button->CleanUp();
-			credits_button = nullptr;
-		}
-
-		if (settings_button != nullptr)
-		{
-			settings_button->CleanUp();
-			settings_button = nullptr;
-		}
-		if (continue_button != nullptr)
-		{
-			continue_button->CleanUp();
-			continue_button = nullptr;
-		}
+		DestroyInitialMenu();
+		CreateCreditsMenu();
 	}
 	if (ele == settings_button && ele->GetState() == ST_PRESSED)
 	{
-		if (play_button != nullptr)
-		{
-			play_button->CleanUp();
-			play_button = nullptr;
-		}
-
-		if (quit_button != nullptr)
-		{
-			quit_button->CleanUp();
-			quit_button = nullptr;
-		}
-
-		if (credits_button != nullptr)
-		{
-			credits_button->CleanUp();
-			credits_button = nullptr;
-		}
-
-		if (settings_button != nullptr)
-		{
-			settings_button->CleanUp();
-			settings_button = nullptr;
-		}
-		if (continue_button != nullptr)
-		{
-			continue_button->CleanUp();
-			continue_button = nullptr;
-		}
+		DestroyInitialMenu();
+		CreateSettingsMenu();
 	}
+	if (ele == return_button && ele->GetState() == ST_PRESSED)
+	{
+		DestroyCreditsmenu();
+		CreateInitalMenu();
+	}
+
 
 
 
@@ -496,12 +372,122 @@ void j1Scene::CreateInitalMenu()
 
 }
 
-void j1Scene::CreateCreditsMeny()
+void j1Scene::CreateCreditsMenu()
 {
+	SDL_Color BLACK = { 0,0,0,255 }; // Recuerda el orden de pintado
 
+	image_background = App->gui->CreateImage({ 0,-10 }, App->gui->image_fo_2);
+	image_1_menu = App->gui->CreateImage({ 260,30 }, App->gui->image_fo);
 
+	credits_text = App->gui->CreatenText({ 280,50 }, App->gui->credits_1, 15, BLACK);
+	credits_text_1 = App->gui->CreatenText({ 280,70 }, App->gui->credits_2, 15, BLACK);
+	credits_text_2 = App->gui->CreatenText({ 280,100 }, App->gui->credits_3, 15, BLACK);
+	credits_text_3 = App->gui->CreatenText({ 280,290 }, App->gui->credits_4, 15, BLACK);
+	credits_text_4 = App->gui->CreatenText({ 280,360 }, App->gui->credits_5, 15, BLACK);
+	credits_author = App->gui->CreatenText({ 280,580 }, App->gui->credits_6, 15, BLACK);
+
+	return_button = App->gui->CreateButton({ 530,600 }, "Return", this, 25, BLACK);
 }
 
 void j1Scene::CreateSettingsMenu()
 {
+	
+}
+
+void j1Scene::DestroyInitialMenu()
+{
+	if (image_1_menu != nullptr)
+	{
+		image_1_menu->CleanUp();
+		image_1_menu = nullptr;
+	}
+
+	if (play_button != nullptr)
+	{
+		play_button->CleanUp();
+		play_button = nullptr;
+	}
+
+	if (quit_button != nullptr)
+	{
+		quit_button->CleanUp();
+		quit_button = nullptr;
+	}
+
+	if (credits_button != nullptr)
+	{
+		credits_button->CleanUp();
+		credits_button = nullptr;
+	}
+
+	if (settings_button != nullptr)
+	{
+		settings_button->CleanUp();
+		settings_button = nullptr;
+	}
+	if (continue_button != nullptr)
+	{
+		continue_button->CleanUp();
+		continue_button = nullptr;
+	}
+	if (image_background != nullptr)
+	{
+		image_background->CleanUp();
+		image_background = nullptr;
+	}
+	ini_menu = false;
+}
+
+void j1Scene::DestroySettingsMenu()
+{
+	
+}
+
+void j1Scene::DestroyCreditsmenu()
+{
+	if (image_1_menu != nullptr)
+	{
+		image_1_menu->CleanUp();
+		image_1_menu = nullptr;
+	}
+	if (image_background != nullptr)
+	{
+		image_background->CleanUp();
+		image_background = nullptr;
+	}
+	if (credits_text != nullptr)
+	{
+		credits_text->CleanUp();
+		credits_text = nullptr;
+	}
+	if (credits_text_1 != nullptr)
+	{
+		credits_text_1->CleanUp();
+		credits_text_1 = nullptr;
+	}
+	if (credits_text_2 != nullptr)
+	{
+		credits_text_2->CleanUp();
+		credits_text_2 = nullptr;
+	}
+	if (credits_text_3 != nullptr)
+	{
+		credits_text_3->CleanUp();
+		credits_text_3 = nullptr;
+	}
+	if (credits_text_4 != nullptr)
+	{
+		credits_text_4->CleanUp();
+		credits_text_4 = nullptr;
+	}
+	if (credits_author != nullptr)
+	{
+		credits_author->CleanUp();
+		credits_author = nullptr;
+	}
+	if (return_button != nullptr)
+	{
+		return_button->CleanUp();
+		return_button = nullptr;
+	}
 }
