@@ -48,12 +48,26 @@ public:
 	void Defocus();
 
 	Ui_image* CreateImage(p2Point<int> pos, SDL_Rect rect);
-	Ui_ntext* CreatenText(p2Point<int> pos, p2SString text, int font_size = 20, SDL_Color _color = { 255,255,255,255 }); // Godllim puedes poner la font aqui tal vez=?;
+	Ui_ntext* CreatenText(p2Point<int> pos, p2SString text, int font_size = 20, SDL_Color _color = { 255,255,255,255 }); 
 	Ui_button* CreateButton(p2Point<int>pos, p2SString text, j1Module* mod, int font_size = 20, SDL_Color _color = { 255,255,255,255 });
 	Ui_slidder* CreateSlidder(p2Point<int>pos, j1Module* mod, bool horizontal);
 	Ui_input_text* CreateInputText(p2Point<int>pos, p2SString text, j1Module* mod, int font_size = 20, SDL_Color _color = { 255,255,255,255 });
 
 	const SDL_Texture* GetAtlas() const;
+
+public:
+
+	// SDL_Rects to know what numbers we need to get the correct result.
+	SDL_Rect botton_n;
+	SDL_Rect botton_h;
+	SDL_Rect botton_p;
+	SDL_Rect slidder_bar;
+	SDL_Rect slidder_n;
+	SDL_Rect slidder_h;
+	SDL_Rect slidder_p;
+	SDL_Rect image_fo;
+	SDL_Rect image_fo_2 = {44,954,1900,1023};
+
 
 private:
 

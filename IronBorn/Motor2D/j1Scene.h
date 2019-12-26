@@ -4,6 +4,12 @@
 #include "j1Module.h"
 
 struct SDL_Texture;
+class Ui_image;
+class Ui_ntext;
+class Ui_button;
+class Ui_element;
+class Ui_slidder;
+class Ui_input_text;
 
 enum LVL
 {
@@ -53,6 +59,15 @@ public:
 
 	void SwapMaps(LVL desired);
 
+	void UI_listener(Ui_element* ele);
+
+	void CreateInitalMenu();
+
+	void CreateCreditsMeny();
+
+	void CreateSettingsMenu();
+
+
 private:
 	bool swaping = false;
 	LVL current = LVL_1;
@@ -66,7 +81,39 @@ private:
 
 	bool playingMusic = false;
 
+	bool wanna_quit = false;
+private:
 
+	//UI thinks
+
+	//Botton with wich we will start the game.
+	Ui_button* play_button;
+
+	//Botton with wich we will quit the game.
+	Ui_button* quit_button;
+
+	Ui_button* credits_button;
+
+	Ui_button* continue_button;
+
+	Ui_button* settings_button;
+
+	Ui_image* image_1_menu;
+
+	Ui_image* image_background;
+
+	Ui_slidder* Music_slidder;
+
+	Ui_slidder* Sound_slidder;
+
+	bool ini_menu = true;
+	bool ini_menu_created;
+
+	bool credits_menu = false;
+	bool credits_menu_created = false;
+
+	bool settings_menu = false;
+	bool settings_menu_created = false;
 public:
 
 	int player_lives = 3;

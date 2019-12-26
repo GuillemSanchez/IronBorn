@@ -13,6 +13,7 @@ Ui_image::Ui_image(UI_type type, p2Point<int> pos, bool inter, SDL_Rect at_pos)
 
 void Ui_image::CleanUp()
 {
+	to_delete = true;
 }
 
 void Ui_image::Draw()

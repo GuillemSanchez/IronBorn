@@ -50,7 +50,7 @@ void Ui_element::Update()
 
 	for (int i = 0; i < listeners.count(); i++)
 	{
-//		listeners[i]->UI_listener(this); GUAI
+		listeners[i]->UI_listener(this); 
 	}
 
 	PostUpdate();

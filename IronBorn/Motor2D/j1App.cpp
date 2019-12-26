@@ -49,11 +49,13 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(map);
 	/*AddModule(player);*/
 	AddModule(manager);
+	AddModule(font);
+	AddModule(gui);
 	AddModule(scene);
 	AddModule(collisions);
 	AddModule(fade); //temporal? todo
-	AddModule(font);
-	AddModule(gui);
+
+
 	// render last to swap buffer
 	AddModule(render);
 

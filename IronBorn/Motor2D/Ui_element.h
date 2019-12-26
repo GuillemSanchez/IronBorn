@@ -68,6 +68,9 @@ public:
 	SDL_Texture* atlas_tex;
 	//var that only one element has it true.
 	bool focus = false;
+
+	bool to_delete = false;
+
 };
 
 

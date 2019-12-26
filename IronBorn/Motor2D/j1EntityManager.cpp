@@ -116,7 +116,7 @@ void j1EntityManager::CreateEntity(ENTITY_TYPE type, p2Point<int> pos)
 	case PLAYER:
 		
 		Ent = new Entity_Player(type, pos, current_index);
-		Ent->active = true;
+		Ent->active = false;
 		Entities.add(Ent);
 		break;
 	case NONE:
@@ -125,7 +125,7 @@ void j1EntityManager::CreateEntity(ENTITY_TYPE type, p2Point<int> pos)
 	case COIN:
 	
 		ent = new Entity_coin(type, pos, current_index);
-		ent->active = true;
+		ent->active = false;
 		Entities.add(ent);
 		Coins.add(ent);
 		break;

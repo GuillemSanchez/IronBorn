@@ -12,6 +12,13 @@
 #include "j1Fade.h"
 #include "j1Collisions.h"
 #include "j1EntityManager.h"
+#include "j1Gui.h"
+#include "Ui_ntext.h"
+#include "Ui_button.h"
+#include "Ui_element.h"
+#include "Ui_input_text.h"
+#include "Ui_image.h"
+
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -39,12 +46,13 @@ bool j1Scene::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool j1Scene::Start()
 {
-	App->map->Load(map_1.GetString());
-	App->map->ChargeColliders();
+	//Gantiguo 
+	/*App->map->Load(map_1.GetString());
+	App->map->ChargeColliders();*/
 
-		
-
-
+	current = LVL_MAX;
+	
+	CreateInitalMenu();
 	return true;
 }
 
@@ -164,7 +172,10 @@ bool j1Scene::Update(float dt)
 	App->map->Draw();
 
 	if (alive && App->manager->my_player->active)
+	{
 		App->manager->my_player->Draw(dt);
+	}
+		
 	
 
 	App->manager->DrawEnts(dt);
@@ -201,6 +212,10 @@ bool j1Scene::PostUpdate()
 	if(App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
 
+	if (wanna_quit == true)
+	{
+		ret = false;
+	}
 	return ret;
 }
 
@@ -300,4 +315,193 @@ void j1Scene::SwapMaps(LVL desired)
 	playingMusic = false;
 
 	current = desired;
+}
+
+void j1Scene::UI_listener(Ui_element * ele)
+{
+	if (ele == play_button && ele->GetState() == ST_PRESSED)
+	{
+		if (image_1_menu != nullptr)
+		{
+			image_1_menu->CleanUp();
+			image_1_menu = nullptr;
+		}
+		
+		if (play_button != nullptr)
+		{
+			play_button->CleanUp();
+			play_button = nullptr;
+		}
+		
+		if (quit_button != nullptr)
+		{
+			quit_button->CleanUp();
+			quit_button = nullptr;
+		}
+
+		if (credits_button != nullptr)
+		{
+			credits_button->CleanUp();
+			credits_button = nullptr;
+		}
+
+		if (settings_button != nullptr)
+		{
+			settings_button->CleanUp();
+			settings_button = nullptr;
+		}
+		if (continue_button != nullptr)
+		{
+			continue_button->CleanUp();
+			continue_button = nullptr;
+		}
+		if (image_background != nullptr)
+		{
+			image_background->CleanUp();
+			image_background = nullptr;
+		}
+		ini_menu = false;
+	}
+	if (ele == quit_button && ele->GetState() == ST_PRESSED)
+	{
+		wanna_quit = true;
+	}
+
+	if (ele == continue_button && ele->GetState() == ST_PRESSED)
+	{
+		if (image_1_menu != nullptr)
+		{
+			image_1_menu->CleanUp();
+			image_1_menu = nullptr;
+		}
+
+		if (play_button != nullptr)
+		{
+			play_button->CleanUp();
+			play_button = nullptr;
+		}
+
+		if (quit_button != nullptr)
+		{
+			quit_button->CleanUp();
+			quit_button = nullptr;
+		}
+
+		if (credits_button != nullptr)
+		{
+			credits_button->CleanUp();
+			credits_button = nullptr;
+		}
+
+		if (settings_button != nullptr)
+		{
+			settings_button->CleanUp();
+			settings_button = nullptr;
+		}
+		if (continue_button != nullptr)
+		{
+			continue_button->CleanUp();
+			continue_button = nullptr;
+		}
+		if (image_background != nullptr)
+		{
+			image_background->CleanUp();
+			image_background = nullptr;
+		}
+		ini_menu = false;
+	}
+	
+	if (ele == credits_button && ele->GetState() == ST_PRESSED)
+	{
+		if (play_button != nullptr)
+		{
+			play_button->CleanUp();
+			play_button = nullptr;
+		}
+
+		if (quit_button != nullptr)
+		{
+			quit_button->CleanUp();
+			quit_button = nullptr;
+		}
+
+		if (credits_button != nullptr)
+		{
+			credits_button->CleanUp();
+			credits_button = nullptr;
+		}
+
+		if (settings_button != nullptr)
+		{
+			settings_button->CleanUp();
+			settings_button = nullptr;
+		}
+		if (continue_button != nullptr)
+		{
+			continue_button->CleanUp();
+			continue_button = nullptr;
+		}
+	}
+	if (ele == settings_button && ele->GetState() == ST_PRESSED)
+	{
+		if (play_button != nullptr)
+		{
+			play_button->CleanUp();
+			play_button = nullptr;
+		}
+
+		if (quit_button != nullptr)
+		{
+			quit_button->CleanUp();
+			quit_button = nullptr;
+		}
+
+		if (credits_button != nullptr)
+		{
+			credits_button->CleanUp();
+			credits_button = nullptr;
+		}
+
+		if (settings_button != nullptr)
+		{
+			settings_button->CleanUp();
+			settings_button = nullptr;
+		}
+		if (continue_button != nullptr)
+		{
+			continue_button->CleanUp();
+			continue_button = nullptr;
+		}
+	}
+
+
+
+
+
+}
+
+void j1Scene::CreateInitalMenu()
+{
+	ini_menu = true;
+
+	SDL_Color BLACK = { 0,0,0,255 }; // Recuerda el orden de pintado
+	image_background = App->gui->CreateImage({ 0,-10 }, App->gui->image_fo_2);
+	image_1_menu = App->gui->CreateImage({260,30}, App->gui->image_fo);
+	play_button = App->gui->CreateButton({ 410,140 }, "Play", this, 25, BLACK);
+	continue_button = App->gui->CreateButton({ 410,250 }, "Continue", this, 25, BLACK);
+	settings_button = App->gui->CreateButton({ 410,360 }, "Settings", this, 25, BLACK);
+	credits_button = App->gui->CreateButton({ 410, 470 }, "Credits", this, 25, BLACK);
+	quit_button = App->gui->CreateButton({ 410,580 }, "Quit", this, 25, BLACK);
+
+
+}
+
+void j1Scene::CreateCreditsMeny()
+{
+
+
+}
+
+void j1Scene::CreateSettingsMenu()
+{
 }
