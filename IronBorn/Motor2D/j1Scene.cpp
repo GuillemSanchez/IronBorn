@@ -345,6 +345,9 @@ void j1Scene::InitialSwap()
 	App->collisions->CleanMap();
 	App->map->CleanUp();
 
+	App->manager->StartAllCoins();
+	App->manager->Start_2_all_coins();
+
 	if (current == LVL_1)
 		App->map->Load(map_1.GetString());
 

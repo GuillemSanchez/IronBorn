@@ -140,10 +140,14 @@ bool j1EntityManager::Save(pugi::xml_node &node) const
 
 bool j1EntityManager::Load(pugi::xml_node &node)
 {
-	//for (int i = 0; i < Entities.count(); i++)
-	//{
-	//	Entities[i]->Load(node);
-	//}
+	if (Entities.count() != 0)
+	{
+		for (int i = 0; i < Entities.count(); i++)
+		{
+			if (Entities[i] != nullptr)
+				Entities[i]->Load(node);
+		}
+	}
 	return true;
 }
 
@@ -261,6 +265,7 @@ void j1EntityManager::Start_2_all_coins()
 {
 	for (int i = 0; i < Coins.count(); i++)
 	{
-		Coins[i]->Start();
+		if (Coins[i]->active)
+			Coins[i]->Start();
 	}
 }

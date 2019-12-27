@@ -108,11 +108,25 @@ bool Entity_coin::Save(pugi::xml_node &node) const
 	pb.append_attribute("collected_1") = collected_1;
 	pb.append_attribute("collected_2") = collected_2;
 
+
 	return true;
 }
 
 bool Entity_coin::Load(pugi::xml_node &node)
 {
+	char I[40];
+
+	sprintf(I, "Coin_%i", my_index);
+
+	position.x = node.child(I).child("coin_stats").attribute("position_x").as_int();
+	position.y = node.child(I).child("coin_stats").attribute("position_y").as_int();
+
+	collected_1 = node.child(I).child("coin_bools").attribute("collected_1").as_bool();
+
+	collected_2 = node.child(I).child("coin_bools").attribute("collected_2").as_bool();
+
+
+
 	return true;
 }
 
