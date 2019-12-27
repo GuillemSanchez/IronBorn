@@ -18,7 +18,7 @@ void j1EntityManager::Init()
 bool j1EntityManager::Awake(pugi::xml_node & node)
 {
 	// First we wanna create the entities, then we will awake them.
-	p2Point<int> player_pos;
+
 	
 	pugi::xml_node player = node.child("entity_player");
 	player_pos.x = player.child("initial_pos").attribute("x").as_int();
@@ -30,8 +30,7 @@ bool j1EntityManager::Awake(pugi::xml_node & node)
 	//Here we awake the entities.
 	for (int i = 0; i < Entities.count(); i++)
 	{
-		if (Entities[i]->active)
-			Entities[i]->Awake(node);
+		Entities[i]->Awake(node);
 	}
 	return true;
 }
@@ -40,8 +39,8 @@ bool j1EntityManager::Start()
 {
 	for (int i = 0; i < Entities.count(); i++)
 	{
-		if (Entities[i]->active)
-			Entities[i]->Start();
+		
+		Entities[i]->Start();
 	}
 	return true;
 }
@@ -163,4 +162,15 @@ Entity_coin * j1EntityManager::SearchTheCoin(iPoint pos)
 			return Coins[i];
 	}
 	return nullptr;
+}
+
+void j1EntityManager::Createlvl(LVL current)
+{
+	my_player->SetPos(player_pos);
+	my_player->active = true;
+
+	for (int i = 0; i < Coins.count(); i++)
+	{
+		Coins[i]->active = true;
+	}
 }

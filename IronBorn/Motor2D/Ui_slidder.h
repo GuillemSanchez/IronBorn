@@ -14,6 +14,7 @@ public:
 
 	void PostUpdate();
 	void Draw();
+	void CleanUp();
 
 	void CalculateLimits();
 

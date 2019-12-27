@@ -8,6 +8,7 @@
 #include "Entity_player.h"
 #include "Entity_coin.h"
 #include "j1Collisions.h"
+#include "j1Scene.h"
 
 
 class j1EntityManager : public j1Module
@@ -56,7 +57,7 @@ public:
 
 	// Specific functions --------------------------------------------
 
-	
+	void Createlvl(LVL current);
 
 	Entity_Player* my_player = nullptr;
 
@@ -64,6 +65,7 @@ private:
 
 	p2List<Entity*> Entities;   //List of entities.
 	p2List<Entity_coin*> Coins;
+	p2Point<int> player_pos;
 
 
 	

@@ -73,6 +73,8 @@ public:
 
 	void DestroyCreditsmenu();
 
+	void CreateLVL1();
+
 
 private:
 	bool swaping = false;
@@ -84,6 +86,7 @@ private:
 	p2Point<int> camera_out;
 	p2SString map_1_music;
 	p2SString map_2_music;
+	p2SString intro_menu;
 
 	bool playingMusic = false;
 

@@ -184,3 +184,13 @@ void j1Audio::ChangeGlobalVolumen(int desired)
 	Mix_VolumeMusic(actual_vol+desired);
 	actual_vol += desired;
 }
+
+void j1Audio::ChangeMusicVol(int desired)
+{
+	Mix_VolumeMusic(desired);
+}
+
+void j1Audio::ChangeFxVol(int desired)
+{
+	Mix_Volume(-1, desired);
+}

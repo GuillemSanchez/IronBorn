@@ -40,6 +40,7 @@ bool j1Scene::Awake(pugi::xml_node& config)
 	map_2.create(config.child("lvl_2").attribute("value").as_string());
 	map_1_music.create(config.child("ms_lvl_1").attribute("value").as_string());
 	map_2_music.create(config.child("ms_lvl_2").attribute("value").as_string());
+	intro_menu.create(config.child("ms_menu").attribute("value").as_string());
 
 	return ret;
 }
@@ -54,6 +55,9 @@ bool j1Scene::Start()
 	current = LVL_MAX;
 	
 	CreateInitalMenu();
+
+	App->audio->PlayMusic(intro_menu.GetString(), 2);
+
 	return true;
 }
 
@@ -217,6 +221,24 @@ bool j1Scene::PostUpdate()
 	{
 		ret = false;
 	}
+
+	if (Music_slidder != nullptr)
+	{
+		float helper = Music_slidder->slidder_value;
+		int desired = (int)(helper * 180);
+
+		App->audio->ChangeMusicVol(desired);
+	}
+		
+
+	if (Sound_slidder != nullptr)
+	{
+		float helper = Sound_slidder->slidder_value;
+		int desired = (int)(helper * 180);
+		App->audio->ChangeFxVol(desired);
+	}
+		
+
 	return ret;
 }
 
@@ -323,6 +345,7 @@ void j1Scene::UI_listener(Ui_element * ele)
 	if (ele == play_button && ele->GetState() == ST_PRESSED)
 	{
 		DestroyInitialMenu();
+		CreateLVL1();
 	}
 	if (ele == quit_button && ele->GetState() == ST_PRESSED)
 	{
@@ -369,7 +392,7 @@ void j1Scene::CreateInitalMenu()
 	continue_button = App->gui->CreateButton({ 410,250 }, "Continue", this, 25, BLACK);
 	settings_button = App->gui->CreateButton({ 410,360 }, "Settings", this, 25, BLACK);
 	credits_button = App->gui->CreateButton({ 410, 470 }, "Credits", this, 25, BLACK);
-	quit_button = App->gui->CreateButton({ 410,580 }, "Quit", this, 25, BLACK);
+	quit_button = App->gui->CreateButton({ 290,600 }, "Quit", this, 25, BLACK);
 
 
 }
@@ -398,7 +421,7 @@ void j1Scene::CreateSettingsMenu()
 	image_background = App->gui->CreateImage({ 0,-10 }, App->gui->image_fo_2);
 	image_1_menu = App->gui->CreateImage({ 260,30 }, App->gui->image_fo);
 
-	Sound_text = App->gui->CreatenText({ 320,180 }, "Fxs:", 25, BLACK);
+	fx_text = App->gui->CreatenText({ 320,180 }, "Fxs:", 25, BLACK);
 	Sound_slidder = App->gui->CreateSlidder({ 320,220 }, this, true);
 
 	Sound_text = App->gui->CreatenText({ 320,280 }, "Music:", 25, BLACK);
@@ -478,16 +501,17 @@ void j1Scene::DestroySettingsMenu()
 		Music_slidder->CleanUp();
 		Music_slidder = nullptr;
 	}
-	if (Sound_text != nullptr)
-	{
-		Sound_text->CleanUp();
-		Sound_text = nullptr;
-	}
 	if (fx_text != nullptr)
 	{
 		fx_text->CleanUp();
 		fx_text = nullptr;
 	}
+	if (Sound_text != nullptr)
+	{
+		Sound_text->CleanUp();
+		Sound_text = nullptr;
+	}
+	
 }
 
 void j1Scene::DestroyCreditsmenu()
@@ -537,4 +561,13 @@ void j1Scene::DestroyCreditsmenu()
 		return_button->CleanUp();
 		return_button = nullptr;
 	}
+}
+
+void j1Scene::CreateLVL1()
+{
+	App->map->Load(map_1.GetString());
+	App->map->ChargeColliders();
+	current = LVL_1;
+
+	App->manager->Createlvl(current);
 }

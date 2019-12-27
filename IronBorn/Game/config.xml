@@ -23,6 +23,7 @@
     <lvl_2 value="Map_2_real.tmx"/>
     <ms_lvl_1 value="audio/music/level_1.ogg"/>
     <ms_lvl_2 value="audio/music/level_2.ogg"/>
+    <ms_menu value="audio/music/Intro_menu.ogg"/>
   </scene>
   <manager>
     <entity_player>

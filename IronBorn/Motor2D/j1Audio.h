@@ -36,6 +36,10 @@ public:
 	//max is 128 min is 0
 	void ChangeGlobalVolumen(int desired);
 
+	void ChangeMusicVol(int desired);
+
+	void ChangeFxVol(int desired);
+
 
 private:
 

@@ -79,6 +79,11 @@ void Ui_slidder::Draw()
 	
 }
 
+void Ui_slidder::CleanUp()
+{
+	to_delete = true;
+}
+
 void Ui_slidder::CalculateLimits()
 {
 	if (horizontal)
