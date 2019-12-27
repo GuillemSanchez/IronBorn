@@ -131,6 +131,16 @@ bool j1Gui::PostUpdate()
 		}
 		
 	}
+
+	if (App->input->GetKey(SDL_SCANCODE_F8) == KEY_DOWN)
+	{
+		debug = !debug;
+	}
+
+	if (debug)
+	{
+		DrawDebug();
+	}
 	return true;
 }
 
@@ -160,6 +170,17 @@ void j1Gui::Defocus()
 		if (UI_elements[i] == nullptr)
 			continue;
 		UI_elements[i]->focus = false;
+	}
+}
+
+void j1Gui::DrawDebug()
+{
+
+	for (int i = 0; i < UI_elements.count(); i++)
+	{
+		if (UI_elements[i] == nullptr)
+			continue;
+		UI_elements[i]->DrawDebug();
 	}
 }
 

@@ -78,3 +78,8 @@ void Ui_element::AddListener(j1Module * mod)
 {
 	listeners.add(mod);
 }
+
+void Ui_element::DrawDebug()
+{
+	App->render->DrawQuad(inter_zone, 255, 255, 0, 100, true, false);
+}

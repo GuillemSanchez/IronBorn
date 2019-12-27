@@ -47,6 +47,9 @@ public:
 
 	void Defocus();
 
+	void DrawDebug();
+	bool debug;
+
 	Ui_image* CreateImage(p2Point<int> pos, SDL_Rect rect);
 	Ui_ntext* CreatenText(p2Point<int> pos, p2SString text, int font_size = 20, SDL_Color _color = { 255,255,255,255 }); 
 	Ui_button* CreateButton(p2Point<int>pos, p2SString text, j1Module* mod, int font_size = 20, SDL_Color _color = { 255,255,255,255 });

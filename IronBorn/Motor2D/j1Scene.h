@@ -87,6 +87,7 @@ public:
 	void DestroyIGmenu();
 
 	LVL current = LVL_1;
+	bool drawing_debug = false;
 private:
 	bool swaping = false;
 

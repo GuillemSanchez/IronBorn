@@ -65,6 +65,9 @@ public:
 	// This function adds a listener to the listeners list. So the module will get the information.
 	void AddListener(j1Module* mod);
 
+	void DrawDebug();
+
+
 public:
 	SDL_Texture* atlas_tex;
 	//var that only one element has it true.
