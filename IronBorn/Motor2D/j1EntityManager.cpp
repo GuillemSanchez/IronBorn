@@ -1,6 +1,10 @@
 #include "j1EntityManager.h"
 #include "Entity_coin.h"
 #include "j1Textures.h"
+#include "Entity.h"
+#include "p2List.h"
+#include "p2Defs.h"
+
 
 j1EntityManager::j1EntityManager()
 {
@@ -13,28 +17,6 @@ j1EntityManager::~j1EntityManager()
 
 void j1EntityManager::Init()
 {
-	// I should change this but i dont know why this generates errors when i do it;
-	lvl_1_pos.add({277 ,234 });
-	lvl_1_pos.add({467 ,139 });
-	lvl_1_pos.add({635 ,158 });
-	lvl_1_pos.add({129 ,634 });
-	lvl_1_pos.add({481 ,647 });
-	lvl_1_pos.add({674, 580 });
-	lvl_1_pos.add({876 ,587 });
-	lvl_1_pos.add({932 , 374});
-	lvl_1_pos.add({1162 ,578 });
-	lvl_1_pos.add({1203 ,375 });
-
-	lvl_2_pos.add({ 55, 517});
-	lvl_2_pos.add({ 163, 485});
-	lvl_2_pos.add({ 281, 614});
-	lvl_2_pos.add({ 381, 533 });
-	lvl_2_pos.add({ 502, 539});
-	lvl_2_pos.add({ 670, 467});
-	lvl_2_pos.add({ 830,409 });
-	lvl_2_pos.add({ 996, 392 });
-	lvl_2_pos.add({1221 ,312 });
-	lvl_2_pos.add({1221 , 531 });
 }
 
 bool j1EntityManager::Awake(pugi::xml_node & node)
@@ -139,6 +121,30 @@ void j1EntityManager::OnCollision(Collider * coll1, Collider * coll2)
 		
 	}
 		
+}
+
+bool j1EntityManager::Save(pugi::xml_node &node) const
+{
+	bool ret;
+	if (Entities.count() != 0)
+	{
+		for (int i = 0; i < Entities.count(); i++)
+		{
+			if (Entities[i] != nullptr)
+				ret = Entities[i]->Save(node);
+		}
+	}
+	
+	return true;
+}
+
+bool j1EntityManager::Load(pugi::xml_node &node)
+{
+	//for (int i = 0; i < Entities.count(); i++)
+	//{
+	//	Entities[i]->Load(node);
+	//}
+	return true;
 }
 
 void j1EntityManager::CreateEntity(ENTITY_TYPE type, p2Point<int> pos)

@@ -53,7 +53,7 @@ void Ui_slidder::PostUpdate()
 	float actual = max_pos - dot.x;
 
 	float val = actual/total;
-	LOG("val: %f, max: %f, min: %f", val, total, actual);
+	//LOG("val: %f, max: %f, min: %f", val, total, actual);
 	slidder_value = 1 - val;
 	
 }

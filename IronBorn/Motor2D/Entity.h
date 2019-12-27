@@ -69,6 +69,10 @@ public:
 	{
 
 	}
+
+	virtual bool Save(pugi::xml_node&node) const { return true; }
+
+	virtual bool Load(pugi::xml_node&node) { return true; }
 	//variables
 
 public:

@@ -43,6 +43,10 @@ public:
 
 	void OnCollision(Collider*, Collider*);
 
+	bool Save(pugi::xml_node&node) const;
+
+	bool Load(pugi::xml_node&node);
+
 	// Module typical functions --------------------------------------
 
 	// Specific functions --------------------------------------------
@@ -75,15 +79,6 @@ private:
 	p2List<Entity*> Entities;   //List of entities.
 	p2List<Entity_coin*> Coins;
 	p2Point<int> player_pos;
-
-
-	p2List<p2Point<int>> lvl_1_pos;
-	p2List<p2Point<int>> lvl_2_pos;
-
-
-	
-
-	
 	
 };
 

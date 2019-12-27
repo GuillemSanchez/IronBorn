@@ -91,6 +91,31 @@ void Entity_coin::OnCollision(Collider * coin, Collider * colli)
 	LOG("Player got a coin");
 }
 
+bool Entity_coin::Save(pugi::xml_node &node) const
+{
+	char I[40];
+
+	sprintf(I, "Coin_%i", my_index);
+	pugi::xml_node coin = node.append_child(I);
+	pugi::xml_node pn = coin.append_child("coin_stats");
+
+	pn.append_attribute("position_x") = position.x;
+	pn.append_attribute("position_y") = position.y;
+
+
+	pugi::xml_node pb = coin.append_child("coin_bools");
+
+	pb.append_attribute("collected_1") = collected_1;
+	pb.append_attribute("collected_2") = collected_2;
+
+	return true;
+}
+
+bool Entity_coin::Load(pugi::xml_node &node)
+{
+	return true;
+}
+
 bool Entity_coin::LoadAnimation(pugi::xml_node & config, Animation & anim)
 {
 

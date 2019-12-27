@@ -307,6 +307,12 @@ bool j1Scene::Save(pugi::xml_node &node ) const
 
 	sc.append_attribute("lvl_current") = curr.GetString();
 
+	sc.append_attribute("player_lives") = player_lives;
+	sc.append_attribute("player_coins") = player_coins;
+	
+	sc.append_attribute("score_t") = score_t;
+	sc.append_attribute("timer_t") = timer_t;
+
 	return true;
 }
 
@@ -316,6 +322,10 @@ bool j1Scene::Load(pugi::xml_node &node )
 
 	curr.create(node.child("scene_player").attribute("lvl_current").as_string());
 
+	player_lives = node.child("scene_player").attribute("player_lives").as_int();
+	player_coins = node.child("scene_player").attribute("player_coins").as_int();
+	score_t = node.child("scene_player").attribute("score_t").as_int();
+	//timer_t = node.child("scene_player").attribute("timer_t").as_int();
 
 	p2SString LvL;
 	LvL.create("LVL_1");

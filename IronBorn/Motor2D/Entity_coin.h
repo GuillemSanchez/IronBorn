@@ -29,6 +29,10 @@ public:
 	bool CleanUp();
 
 	void OnCollision(Collider* coin, Collider* colli);
+
+	bool Save(pugi::xml_node&) const;
+
+	bool Load(pugi::xml_node&);
 	
 
 public:

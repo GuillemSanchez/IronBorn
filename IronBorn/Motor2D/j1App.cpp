@@ -18,6 +18,8 @@
 #include "j1EntityManager.h"
 #include "j1Fonts.h"
 #include "j1Gui.h"
+#include "PugiXml\src\pugixml.hpp"
+
 
 // Constructor
 j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
@@ -348,7 +350,7 @@ void j1App::LoadGame(const char* file)
 	// we should be checking if that file actually exist
 	// from the "GetSaveGames" list
 	want_to_load = true;
-	//load_game.create("%s%s", fs->GetSaveDirectory(), file);
+	load_game.create("save_game.xml");
 }
 
 // ---------------------------------------
@@ -374,7 +376,7 @@ bool j1App::LoadGameNow()
 	pugi::xml_document data;
 	pugi::xml_node root;
 
-	pugi::xml_parse_result result = data.load_file("save_game.xml"); //guillem todo: change this with a filesistem or smt idk
+	pugi::xml_parse_result result = data.load_file("save_game.xml");
 
 	if(result != NULL)
 	{

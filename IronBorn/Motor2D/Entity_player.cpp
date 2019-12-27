@@ -314,46 +314,48 @@ p2Point<int> Entity_Player::GetPosition()
 	return position;
 }
 //
-//bool Entity_Player::Save(pugi::xml_node &node) const
-//{
-//
-//	pugi::xml_node pn = node.append_child("player_numbers");
-//
-//	pn.append_attribute("position_x") = position.x;
-//	pn.append_attribute("position_y") = position.y;
-//	pn.append_attribute("velocity_x") = velocity.x;
-//	pn.append_attribute("velocity_y") = velocity.y;
-//	pn.append_attribute("acceleration_x") = acceleration.x;
-//	pn.append_attribute("acceleration_y") = acceleration.y;
-//	pn.append_attribute("stack_x") = stack.x;
-//	pn.append_attribute("stack_y") = stack.y;
-//
-//
-//	pugi::xml_node pb = node.append_child("player_bools");
-//
-//	pb.append_attribute("jump_ava") = jump_ava;
-//
-//	return true;
-//}
-//
-//bool Entity_Player::Load(pugi::xml_node &node)
-//{
-//	position.x = node.child("player_numbers").attribute("position_x").as_int();
-//	position.y = node.child("player_numbers").attribute("position_y").as_int();
-//	velocity.x = node.child("player_numbers").attribute("velocity_x").as_float();
-//	velocity.y = node.child("player_numbers").attribute("velocity_y").as_float();
-//	acceleration.x = node.child("player_numbers").attribute("acceleration_x").as_float();
-//	acceleration.y = node.child("player_numbers").attribute("acceleration_y").as_float();
-//	stack.x = node.child("player_numbers").attribute("stack_x").as_float();
-//	stack.x = node.child("player_numbers").attribute("stack_x").as_float();
-//
-//
-//	jump_ava = node.child("player_bools").attribute("jump_ava").as_bool();
-//
-//
-//	JustLoaded = true;
-//	return true;
-//}
+bool Entity_Player::Save(pugi::xml_node &node) const
+{
+	pugi::xml_node player = node.append_child("player");
+	pugi::xml_node pn = player.append_child("player_numbers");
+
+	pn.append_attribute("position_x") = position.x;
+	pn.append_attribute("position_y") = position.y;
+	pn.append_attribute("velocity_x") = velocity.x;
+	pn.append_attribute("velocity_y") = velocity.y;
+	pn.append_attribute("acceleration_x") = acceleration.x;
+	pn.append_attribute("acceleration_y") = acceleration.y;
+	pn.append_attribute("stack_x") = stack.x;
+	pn.append_attribute("stack_y") = stack.y;
+
+
+	pugi::xml_node pb = player.append_child("player_bools");
+
+	pb.append_attribute("jump_ava") = jump_ava;
+	pb.append_attribute("active") = active;
+
+	return true;
+}
+
+bool Entity_Player::Load(pugi::xml_node &node)
+{
+	position.x = node.child("player").child("player_numbers").attribute("position_x").as_int();
+	position.y = node.child("player").child("player_numbers").attribute("position_y").as_int();
+	velocity.x = node.child("player").child("player_numbers").attribute("velocity_x").as_float();
+	velocity.y = node.child("player").child("player_numbers").attribute("velocity_y").as_float();
+	acceleration.x = node.child("player").child("player_numbers").attribute("acceleration_x").as_float();
+	acceleration.y = node.child("player").child("player_numbers").attribute("acceleration_y").as_float();
+	stack.x = node.child("player").child("player_numbers").attribute("stack_x").as_float();
+	stack.x = node.child("player").child("player_numbers").attribute("stack_x").as_float();
+
+
+	jump_ava = node.child("player").child("player_bools").attribute("jump_ava").as_bool();
+	active = node.child("player").child("player_bools").attribute("active").as_bool();
+
+
+	JustLoaded = true;
+	return true;
+}
 
 bool Entity_Player::LoadAnimation(pugi::xml_node & config, Animation& anim)
 {

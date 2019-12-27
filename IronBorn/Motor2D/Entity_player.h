@@ -42,9 +42,9 @@ public:
 
 	p2Point<int> GetPosition();
 
-	/*bool Save(pugi::xml_node&) const;
+	bool Save(pugi::xml_node&) const;
 
-	bool Load(pugi::xml_node&);*/
+	bool Load(pugi::xml_node&);
 
 	bool JustLoaded = false;
 

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<game_state>
+	<input />
+	<window />
+	<textures />
+	<audio />
+	<map />
+	<manager />
+	<fonts />
+	<gui />
+	<scene />
+	<collisions />
+	<fade />
+	<renderer />
+</game_state>
