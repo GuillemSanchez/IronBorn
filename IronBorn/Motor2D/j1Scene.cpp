@@ -423,6 +423,9 @@ void j1Scene::UI_listener(Ui_element * ele)
 	if (ele == continue_button && ele->GetState() == ST_PRESSED)
 	{
 		DestroyInitialMenu();
+		CreateLVL1();
+		CreateINGAMEui();
+		App->LoadGame("save_game.xml");
 	}
 	
 	if (ele == credits_button && ele->GetState() == ST_PRESSED)
