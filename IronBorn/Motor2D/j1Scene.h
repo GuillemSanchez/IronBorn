@@ -86,10 +86,10 @@ public:
 
 	void DestroyIGmenu();
 
-
+	LVL current = LVL_1;
 private:
 	bool swaping = false;
-	LVL current = LVL_1;
+
 	int current_lvl = 1;
 	p2SString map_1;
 	p2SString map_2;

@@ -63,12 +63,22 @@ public:
 
 	void InactiveAll();
 
+	void SetCoinPos(int i, p2Point<int> pos);
+
+	void StartAllCoins();
+	void Start_2_all_coins();
+
+	SDL_Texture* Coin_Texture;
 
 private:
 
 	p2List<Entity*> Entities;   //List of entities.
 	p2List<Entity_coin*> Coins;
 	p2Point<int> player_pos;
+
+
+	p2List<p2Point<int>> lvl_1_pos;
+	p2List<p2Point<int>> lvl_2_pos;
 
 
 	

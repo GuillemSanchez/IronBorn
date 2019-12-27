@@ -237,7 +237,7 @@ bool Entity_Player::CleanUp()
 	App->scene->alive = false;
 	current = nullptr;
 	player_collider->to_delete = true;
-	App->scene->player_lives -= 1;
+
 	return true;
 }
 

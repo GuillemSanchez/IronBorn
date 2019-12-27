@@ -1,5 +1,6 @@
 #include "j1EntityManager.h"
 #include "Entity_coin.h"
+#include "j1Textures.h"
 
 j1EntityManager::j1EntityManager()
 {
@@ -12,7 +13,28 @@ j1EntityManager::~j1EntityManager()
 
 void j1EntityManager::Init()
 {
+	// I should change this but i dont know why this generates errors when i do it;
+	lvl_1_pos.add({277 ,234 });
+	lvl_1_pos.add({467 ,139 });
+	lvl_1_pos.add({635 ,158 });
+	lvl_1_pos.add({129 ,634 });
+	lvl_1_pos.add({481 ,647 });
+	lvl_1_pos.add({674, 580 });
+	lvl_1_pos.add({876 ,587 });
+	lvl_1_pos.add({932 , 374});
+	lvl_1_pos.add({1162 ,578 });
+	lvl_1_pos.add({1203 ,375 });
 
+	lvl_2_pos.add({ 55, 517});
+	lvl_2_pos.add({ 163, 485});
+	lvl_2_pos.add({ 281, 614});
+	lvl_2_pos.add({ 381, 533 });
+	lvl_2_pos.add({ 502, 539});
+	lvl_2_pos.add({ 670, 467});
+	lvl_2_pos.add({ 830,409 });
+	lvl_2_pos.add({ 996, 392 });
+	lvl_2_pos.add({1221 ,312 });
+	lvl_2_pos.add({1221 , 531 });
 }
 
 bool j1EntityManager::Awake(pugi::xml_node & node)
@@ -25,7 +47,17 @@ bool j1EntityManager::Awake(pugi::xml_node & node)
 	player_pos.y = player.child("initial_pos").attribute("y").as_int();
 
 	CreateEntity(PLAYER, player_pos);
-	CreateEntity(COIN,	iPoint(80,30));
+	CreateEntity(COIN, iPoint(80, 30));
+	CreateEntity(COIN, iPoint(90, 30));
+	CreateEntity(COIN, iPoint(100, 30));
+	CreateEntity(COIN, iPoint(120, 30));
+	CreateEntity(COIN, iPoint(130, 30));
+	CreateEntity(COIN, iPoint(140, 30));
+	CreateEntity(COIN, iPoint(150, 30));
+	CreateEntity(COIN, iPoint(160, 30));
+	CreateEntity(COIN, iPoint(170, 30));
+	CreateEntity(COIN, iPoint(180, 30));
+
 
 	//Here we awake the entities.
 	for (int i = 0; i < Entities.count(); i++)
@@ -37,6 +69,7 @@ bool j1EntityManager::Awake(pugi::xml_node & node)
 
 bool j1EntityManager::Start()
 {
+	Coin_Texture = App->tex->Load("Assets/MonedaD.png");
 	for (int i = 0; i < Entities.count(); i++)
 	{
 		
@@ -93,12 +126,17 @@ void j1EntityManager::OnCollision(Collider * coll1, Collider * coll2)
 	
 	if (coll1->type == COLLIDER_COIN)
 	{
+		
 		iPoint help;
 		help.x = coll1->rect.x;
 		help.y = coll1->rect.y;
 		Entity_coin* helper = SearchTheCoin(help);
 
-		helper->OnCollision(coll1, coll2);
+		if (helper->active)
+		{
+			helper->OnCollision(coll1, coll2);
+		}
+		
 	}
 		
 }
@@ -108,6 +146,7 @@ void j1EntityManager::CreateEntity(ENTITY_TYPE type, p2Point<int> pos)
 	
 
 	int current_index = Entities.count(); //We will have index to control ours entities
+	int coins_index = Coins.count();
 	Entity* Ent = nullptr;
 	Entity_coin* ent = nullptr;
 	switch (type)
@@ -123,7 +162,7 @@ void j1EntityManager::CreateEntity(ENTITY_TYPE type, p2Point<int> pos)
 		break;
 	case COIN:
 	
-		ent = new Entity_coin(type, pos, current_index);
+		ent = new Entity_coin(type, pos, coins_index);
 		ent->active = false;
 		Entities.add(ent);
 		Coins.add(ent);
@@ -169,10 +208,10 @@ void j1EntityManager::Createlvl(LVL current)
 	my_player->SetPos(player_pos);
 	my_player->active = true;
 
-	for (int i = 0; i < Coins.count(); i++)
+	/*for (int i = 0; i < Coins.count(); i++)
 	{
 		Coins[i]->active = true;
-	}
+	}*/
 }
 
 void j1EntityManager::InactiveAll()
@@ -182,5 +221,40 @@ void j1EntityManager::InactiveAll()
 		Entities[i]->CleanUp();
 		Entities[i]->active = false;
 		Entities[i]->Start();
+	}
+}
+
+void j1EntityManager::SetCoinPos(int i, p2Point<int> pos)
+{
+	if (i < Coins.count())
+	{
+		if (Coins[i]->active)
+			Coins[i]->position = pos;
+	}
+}
+
+void j1EntityManager::StartAllCoins()
+{
+
+	for (int i = 0; i < Coins.count(); i++)
+	{
+		
+		Coins[i]->CleanUp();
+		if ((Coins[i]->collected_1 == true && App->scene->current == LVL_1) || (Coins[i]->collected_2 == true && App->scene->current == LVL_2))
+		{
+			Coins[i]->active = false;
+		}
+		else
+		{
+			Coins[i]->active = true;
+		}
+	}
+}
+
+void j1EntityManager::Start_2_all_coins()
+{
+	for (int i = 0; i < Coins.count(); i++)
+	{
+		Coins[i]->Start();
 	}
 }

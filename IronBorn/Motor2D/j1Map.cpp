@@ -7,6 +7,7 @@
 #include "j1Window.h"
 #include "j1Collisions.h"
 #include "j1Scene.h"
+#include "j1EntityManager.h"
 #include <math.h>
 
 j1Map::j1Map() : j1Module(), map_loaded(false)
@@ -136,13 +137,15 @@ iPoint j1Map::WorldToMap(int x, int y) const
 
 bool j1Map::ChargeColliders()
 {
+	int c = 0;
 	bool ret = true;
 	p2List_item<Objects*>* item;
 	item = data.objects.start;
-	p2SString WALL, DEATH, WIN;
+	p2SString WALL, DEATH, WIN, COIN;
 	WALL.create("WALL");
 	DEATH.create("DEATH");
 	WIN.create("WIN");
+	COIN.create("COIN");
 
 	while (item != NULL)
 	{
@@ -156,6 +159,11 @@ bool j1Map::ChargeColliders()
 				App->collisions->AddCollider(collo->data->phisbody, COLLIDER_DEATH, App->scene); // we will handle the player death on scene
 			if (collo->data->type == WIN)
 				App->collisions->AddCollider(collo->data->phisbody, COLLIDER_WIN, App->scene);
+			if (collo->data->type == COIN)
+			{
+				App->manager->SetCoinPos(c, { collo->data->phisbody.x,collo->data->phisbody.y });
+				c++;
+			}
 			collo = collo->next;
 		}
 		item = item->next;

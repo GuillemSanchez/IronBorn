@@ -42,12 +42,14 @@ void Entity_coin::Draw(float dt)
 {
 	current = &IDLE;
 	App->render->Blit(coin_idle, position.x, position.y, &current->GetCurrentFrame(dt), 1);
+	coin_collider->SetPos(position.x, position.y);
 }
 
 bool Entity_coin::Start()
 {
-	coin_idle = App->tex->Load("Assets/MonedaD.png");
+	coin_idle = App->manager->Coin_Texture;
 	coin_clinck = App->audio->LoadFx(coin_sound.GetString());
+
 	SDL_Rect colli;
 	colli.x = position.x;
 	colli.y = position.y;
@@ -67,7 +69,6 @@ bool Entity_coin::Update(float dt)
 
 bool Entity_coin::CleanUp()
 {
-	App->tex->UnLoad(coin_idle);
 	coin_collider->to_delete = true;
 	active = false;
 	
@@ -81,6 +82,11 @@ void Entity_coin::OnCollision(Collider * coin, Collider * colli)
 	
 	App->scene->player_coins += 1;
 	App->scene->score_t += 1000;
+
+	if (App->scene->current == LVL_1)
+		collected_1 = true;
+	if (App->scene->current == LVL_2)
+		collected_2 = true;
 
 	LOG("Player got a coin");
 }

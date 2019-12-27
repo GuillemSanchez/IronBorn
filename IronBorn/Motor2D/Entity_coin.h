@@ -29,6 +29,7 @@ public:
 	bool CleanUp();
 
 	void OnCollision(Collider* coin, Collider* colli);
+	
 
 public:
 
@@ -49,7 +50,8 @@ public:
 	p2Point<int> coin_w_h;
 	p2Point<int> oculted_pos;
 	
-	bool collected = false;
+	bool collected_1 = false;
+	bool collected_2 = false;
 };
 
 

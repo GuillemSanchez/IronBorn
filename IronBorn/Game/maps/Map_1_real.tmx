@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="48" tilewidth="16" tileheight="16" nextobjectid="110">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="48" tilewidth="16" tileheight="16" nextobjectid="120">
  <tileset firstgid="1" name="Terrain_1" tilewidth="16" tileheight="16" tilecount="900" columns="30">
   <image source="../Assets/DarkForest1.1/env_ground.png" width="480" height="480"/>
  </tileset>
@@ -13227,11 +13227,11 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="511"/>
-   <tile gid="512"/>
-   <tile gid="1928"/>
-   <tile gid="1929"/>
-   <tile gid="1929"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -13327,12 +13327,12 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="541"/>
-   <tile gid="542"/>
-   <tile gid="1961"/>
-   <tile gid="2106"/>
-   <tile gid="2106"/>
-   <tile gid="1967"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="1975"/>
@@ -13428,11 +13428,11 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="572"/>
-   <tile gid="752"/>
-   <tile gid="752"/>
-   <tile gid="752"/>
-   <tile gid="2111"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="1975"/>
@@ -13528,12 +13528,12 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="1994"/>
-   <tile gid="1995"/>
-   <tile gid="752"/>
-   <tile gid="2245"/>
-   <tile gid="1895"/>
-   <tile gid="1907"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="1885"/>
@@ -13628,12 +13628,12 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="2065"/>
-   <tile gid="2066"/>
-   <tile gid="752"/>
-   <tile gid="752"/>
-   <tile gid="1983"/>
-   <tile gid="1980"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="1915"/>
@@ -13727,13 +13727,13 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="511"/>
+   <tile gid="512"/>
+   <tile gid="1928"/>
+   <tile gid="1929"/>
+   <tile gid="1929"/>
    <tile gid="0"/>
-   <tile gid="546"/>
-   <tile gid="547"/>
-   <tile gid="752"/>
-   <tile gid="2365"/>
-   <tile gid="752"/>
-   <tile gid="1890"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="2035"/>
@@ -13827,13 +13827,13 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="541"/>
+   <tile gid="542"/>
+   <tile gid="1961"/>
+   <tile gid="2106"/>
+   <tile gid="2106"/>
+   <tile gid="1967"/>
    <tile gid="0"/>
-   <tile gid="1994"/>
-   <tile gid="1995"/>
-   <tile gid="752"/>
-   <tile gid="2337"/>
-   <tile gid="752"/>
-   <tile gid="1920"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="2035"/>
@@ -13928,12 +13928,12 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="2065"/>
-   <tile gid="2066"/>
+   <tile gid="572"/>
    <tile gid="752"/>
    <tile gid="752"/>
-   <tile gid="1983"/>
-   <tile gid="1950"/>
+   <tile gid="752"/>
+   <tile gid="2111"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="2035"/>
@@ -15843,7 +15843,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <objectgroup name="Colliders">
+ <objectgroup name="Colliders" visible="0">
   <object id="1" type="WALL" x="2" y="588" width="28" height="185"/>
   <object id="2" type="WALL" x="26" y="604" width="23" height="170"/>
   <object id="4" type="WALL" x="43" y="654" width="54" height="113"/>
@@ -15923,13 +15923,13 @@
   <object id="86" type="WALL" x="1284" y="239" width="196" height="51"/>
   <object id="87" type="WALL" x="1329" y="272" width="59" height="32"/>
   <object id="88" type="WALL" x="1472" y="272" width="40" height="30"/>
-  <object id="89" type="WALL" x="1386" y="351" width="74" height="19"/>
+  <object id="89" type="WALL" x="1389" y="431" width="74" height="19"/>
   <object id="90" type="WALL" x="768" y="653" width="85" height="118"/>
   <object id="91" type="WALL" x="848" y="637" width="65" height="131"/>
   <object id="92" type="WALL" x="909" y="623" width="52" height="148"/>
   <object id="93" type="WALL" x="954" y="558" width="38" height="208"/>
-  <object id="94" type="WALL" x="1406" y="360" width="70" height="413"/>
-  <object id="95" type="WALL" x="1439" y="281" width="14" height="84"/>
+  <object id="94" type="WALL" x="1408" y="431" width="70" height="413"/>
+  <object id="95" type="WALL" x="1439" y="281" width="14" height="164"/>
   <object id="97" type="WALL" x="988" y="587" width="69" height="179"/>
   <object id="98" type="WALL" x="1056" y="608" width="63" height="161"/>
   <object id="99" type="WALL" x="1118" y="618" width="163" height="152"/>
@@ -15940,6 +15940,16 @@
   <object id="105" type="DEATH" x="718" y="793" width="48" height="13"/>
   <object id="106" type="WALL" x="-75" y="32" width="76" height="552"/>
   <object id="107" type="WALL" x="-75" y="-111" width="1044" height="116"/>
-  <object id="109" type="WIN" x="1421" y="255" width="30" height="128"/>
+  <object id="109" type="WIN" x="1420" y="334" width="30" height="128"/>
+  <object id="110" type="COIN" x="277" y="234" width="22" height="17"/>
+  <object id="111" type="COIN" x="635" y="158" width="23" height="16"/>
+  <object id="112" type="COIN" x="467" y="139" width="23" height="18"/>
+  <object id="113" type="COIN" x="481" y="647" width="21" height="19"/>
+  <object id="114" type="COIN" x="129" y="634" width="20" height="17"/>
+  <object id="115" type="COIN" x="674" y="580" width="23" height="20"/>
+  <object id="116" type="COIN" x="876" y="587" width="23" height="26"/>
+  <object id="117" type="COIN" x="932" y="374" width="18" height="15"/>
+  <object id="118" type="COIN" x="1162" y="578" width="22" height="19"/>
+  <object id="119" type="COIN" x="1203" y="375" width="31" height="24"/>
  </objectgroup>
 </map>

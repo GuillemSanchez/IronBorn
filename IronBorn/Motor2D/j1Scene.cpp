@@ -364,6 +364,7 @@ void j1Scene::OnCollision(Collider * c1, Collider * c2)
 		{
 			App->manager->my_player->CleanUp();
 			App->fade->FadeToBlack();
+			App->scene->player_lives -= 1;
 		}
 
 	}
@@ -388,6 +389,9 @@ void j1Scene::SwapMaps(LVL desired)
 	playingMusic = false;
 
 	current = desired;
+
+	App->manager->StartAllCoins();
+	App->manager->Start_2_all_coins();
 }
 
 void j1Scene::UI_listener(Ui_element * ele)
@@ -626,6 +630,9 @@ void j1Scene::DestroyCreditsmenu()
 
 void j1Scene::CreateLVL1()
 {
+	App->manager->StartAllCoins();
+
+	App->manager->Start_2_all_coins();
 	App->map->Load(map_1.GetString());
 	App->map->ChargeColliders();
 	current = LVL_1;
