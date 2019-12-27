@@ -174,3 +174,13 @@ void j1EntityManager::Createlvl(LVL current)
 		Coins[i]->active = true;
 	}
 }
+
+void j1EntityManager::InactiveAll()
+{
+	for (int i = 0; i < Entities.count(); i++)
+	{
+		Entities[i]->CleanUp();
+		Entities[i]->active = false;
+		Entities[i]->Start();
+	}
+}

@@ -80,6 +80,8 @@ void Entity_coin::OnCollision(Collider * coin, Collider * colli)
 	CleanUp();
 	
 	App->scene->player_coins += 1;
+	App->scene->score_t += 1000;
+
 	LOG("Player got a coin");
 }
 

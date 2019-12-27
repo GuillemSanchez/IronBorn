@@ -2,6 +2,8 @@
 #define __j1SCENE_H__
 
 #include "j1Module.h"
+#include "j1Timer.h"
+
 
 struct SDL_Texture;
 class Ui_image;
@@ -54,6 +56,7 @@ public:
 	
 	void InitialSwap();
 	
+	void DestroyEverythink();
 
 	void OnCollision(Collider* c1, Collider* c2);
 
@@ -79,6 +82,10 @@ public:
 
 	void DestroyINGAMEui();
 
+	void CreateIGmenu();
+
+	void DestroyIGmenu();
+
 
 private:
 	bool swaping = false;
@@ -95,6 +102,8 @@ private:
 	bool playingMusic = false;
 
 	bool wanna_quit = false;
+
+
 private:
 
 	//UI thinks
@@ -144,9 +153,22 @@ private:
 	Ui_image* coin_sprite;
 	Ui_image* life_sprite;
 
-	Ui_ntext* EXTRA_LIFE;
+	Ui_ntext* score;
+	Ui_ntext* timer;
+
+	float timer_t;
+
+
+
 	//INGAME ui -----------------------------------
 
+	//INGAME menu ---------------------------------
+
+	Ui_button* resume_button;
+	Ui_button* return_to_hub_button;
+
+
+	//INGAME menu ---------------------------------
 	bool ini_menu = true;
 	bool ini_menu_created;
 
@@ -155,11 +177,17 @@ private:
 
 	bool settings_menu = false;
 	bool settings_menu_created = false;
+
+	bool menu_created = false;
+	bool in_game = false;
 public:
 
+	int score_t = 10000;
+	j1Timer	startup_time;
 	int player_lives = 3;
 	int player_coins = 0;
 	bool alive = false;
+	bool pause = false;
 };
 
 #endif // __j1SCENE_H__

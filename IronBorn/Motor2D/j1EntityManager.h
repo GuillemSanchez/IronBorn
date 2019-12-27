@@ -61,6 +61,9 @@ public:
 
 	Entity_Player* my_player = nullptr;
 
+	void InactiveAll();
+
+
 private:
 
 	p2List<Entity*> Entities;   //List of entities.

@@ -56,6 +56,7 @@ bool j1Scene::Start()
 	
 	CreateInitalMenu();
 
+	
 	App->audio->PlayMusic(intro_menu.GetString(), 2);
 
 	return true;
@@ -214,8 +215,19 @@ bool j1Scene::PostUpdate()
 {
 	bool ret = true;
 
-	if(App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
-		ret = false;
+	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+	{
+		if (in_game)
+		{
+			if (!menu_created)
+				CreateIGmenu();
+		}
+		else
+		{
+			ret = false;
+		}
+	}
+		
 
 	if (wanna_quit == true)
 	{
@@ -251,6 +263,25 @@ bool j1Scene::PostUpdate()
 		sprintf(coins,"X %i", player_coins);
 		player_coins_t->ChangeText(coins);
 	}
+
+	if (score != nullptr)
+	{
+		score_t -= 1;
+		if (score_t <= 0)
+			score_t = 0;
+		char scc[70];
+		sprintf(scc, "Score: %i", score_t);
+		score->ChangeText(scc);
+
+	}
+	if (timer != nullptr)
+	{
+		char ttm[70];
+		sprintf(ttm, "Timer: %f", startup_time.ReadSec());
+		timer->ChangeText(ttm);
+	}
+
+
 	return ret;
 }
 
@@ -315,6 +346,13 @@ void j1Scene::InitialSwap()
 	App->map->ChargeColliders();
 	playingMusic = false;
 
+
+}
+
+void j1Scene::DestroyEverythink()
+{
+	App->map->CleanUp();
+	App->collisions->CleanMap();
 
 }
 
@@ -387,17 +425,27 @@ void j1Scene::UI_listener(Ui_element * ele)
 		CreateInitalMenu();
 	}
 
+	if (ele == resume_button && ele->GetState() == ST_PRESSED)
+	{
+		DestroyIGmenu();
+	}
+	if (ele == return_to_hub_button && ele->GetState() == ST_PRESSED)
+	{
+		DestroyIGmenu();
+		DestroyINGAMEui();
+		DestroyEverythink();
+		App->manager->InactiveAll();
+		CreateInitalMenu();
+		App->audio->PlayMusic(intro_menu.GetString(), 2);
+		current = LVL_MAX;
+		playingMusic = false;
 
-
-
-
-
+	}
 }
 
 void j1Scene::CreateInitalMenu()
 {
 	ini_menu = true;
-
 	SDL_Color BLACK = { 0,0,0,255 }; // Recuerda el orden de pintado
 	image_background = App->gui->CreateImage({ 0,-10 }, App->gui->image_fo_2);
 	image_1_menu = App->gui->CreateImage({260,30}, App->gui->image_fo);
@@ -581,20 +629,26 @@ void j1Scene::CreateLVL1()
 	App->map->Load(map_1.GetString());
 	App->map->ChargeColliders();
 	current = LVL_1;
+	startup_time.Start();
 
 	App->manager->Createlvl(current);
 }
 
 void j1Scene::CreateINGAMEui()
 {
+	in_game = true;
+
 	coin_sprite = App->gui->CreateImage({ 105,20 }, App->gui->coin_sprite);
 	life_sprite = App->gui->CreateImage({ 20,20 }, App->gui->hearth_sprite);
 	player_coins_t = App->gui->CreatenText({ 125,14 }, "X 3", 25);
 	player_lives_t = App->gui->CreatenText({ 55,14 }, "X 3", 25);
+	timer = App->gui->CreatenText({ 500,14 }, "Time:", 25);
+	score = App->gui->CreatenText({ 750,14 }, "Score:", 25);
 }
 
 void j1Scene::DestroyINGAMEui()
 {
+
 	if (coin_sprite != nullptr)
 	{
 		coin_sprite->CleanUp();
@@ -615,4 +669,75 @@ void j1Scene::DestroyINGAMEui()
 		player_lives_t->CleanUp();
 		player_lives_t = nullptr;
 	}
+
+	if (score != nullptr)
+	{
+		score->CleanUp();
+		score = nullptr;
+	}
+
+	if (timer != nullptr)
+	{
+		timer->CleanUp();
+		timer = nullptr;
+	}
+	in_game = false;
+}
+
+void j1Scene::CreateIGmenu()
+{
+	menu_created = true;
+	pause = true;
+	SDL_Color BLACK = { 0,0,0,255 }; // Recuerda el orden de pintado
+	image_1_menu = App->gui->CreateImage({ 260,30 }, App->gui->image_fo);
+
+	fx_text = App->gui->CreatenText({ 320,180 }, "Fxs:", 25, BLACK);
+	Sound_slidder = App->gui->CreateSlidder({ 320,220 }, this, true);
+
+	Sound_text = App->gui->CreatenText({ 320,280 }, "Music:", 25, BLACK);
+	Music_slidder = App->gui->CreateSlidder({ 320,320 }, this, true);
+
+	return_to_hub_button = App->gui->CreateButton({ 530,600 }, "Hub", this, 25, BLACK);
+	resume_button = App->gui->CreateButton({ 290,600 }, "Resume", this, 25, BLACK);
+}
+
+void j1Scene::DestroyIGmenu()
+{
+	menu_created = false;
+	if (image_1_menu != nullptr)
+	{
+		image_1_menu->CleanUp();
+		image_1_menu = nullptr;
+	}
+	if (Sound_slidder != nullptr)
+	{
+		Sound_slidder->CleanUp();
+		Sound_slidder = nullptr;
+	}
+	if (Music_slidder != nullptr)
+	{
+		Music_slidder->CleanUp();
+		Music_slidder = nullptr;
+	}
+	if (fx_text != nullptr)
+	{
+		fx_text->CleanUp();
+		fx_text = nullptr;
+	}
+	if (Sound_text != nullptr)
+	{
+		Sound_text->CleanUp();
+		Sound_text = nullptr;
+	}
+	if (return_to_hub_button != nullptr)
+	{
+		return_to_hub_button->CleanUp();
+		return_to_hub_button = nullptr;
+	}
+	if (resume_button != nullptr)
+	{
+		resume_button->CleanUp();
+		resume_button = nullptr;
+	}
+	pause = false;
 }

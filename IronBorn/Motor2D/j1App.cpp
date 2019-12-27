@@ -261,8 +261,15 @@ bool j1App::DoUpdate()
 		if(pModule->active == false) {
 			continue;
 		}
-
-		ret = item->data->Update(dt);
+		if (App->scene->pause)
+		{
+			ret = item->data->Update(0);
+		}
+		else
+		{
+			ret = item->data->Update(dt);
+		}
+		
 		//LOG("DT: %f", dt);
 	}
 
