@@ -82,6 +82,16 @@ bool j1Gui::Awake(pugi::xml_node& conf)
 	on_hover_sound = conf.child("fx_hover").attribute("value").as_string();
 	on_pressed_sound = conf.child("fx_pressed").attribute("value").as_string();
 
+	hearth_sprite.x = conf.child("hearth").attribute("x").as_int();
+	hearth_sprite.y = conf.child("hearth").attribute("y").as_int();
+	hearth_sprite.w = conf.child("hearth").attribute("w").as_int();
+	hearth_sprite.h = conf.child("hearth").attribute("h").as_int();
+
+	coin_sprite.x = conf.child("coin").attribute("x").as_int();
+	coin_sprite.y = conf.child("coin").attribute("y").as_int();
+	coin_sprite.w = conf.child("coin").attribute("w").as_int();
+	coin_sprite.h = conf.child("coin").attribute("h").as_int();
+
 	return ret;
 }
 

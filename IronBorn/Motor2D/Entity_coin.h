@@ -41,7 +41,9 @@ public:
 	Animation IDLE;
 	SDL_Texture* coin_idle = nullptr;
 	Collider* coin_collider;
+	p2SString coin_sound;
 
+	uint coin_clinck;
 
 	p2Point<int> position;
 	p2Point<int> coin_w_h;

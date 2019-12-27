@@ -91,7 +91,7 @@
       </player>
     </entity_player>
     <entity_coin>
-      <fx_collect/>
+      <fx_collect value="audio/fx/coin.wav"/>
       <coin_w_h w ="10" h ="16"/>
       <oculted_pos x="-10" y ="-30"/>
       <animations>
@@ -117,6 +117,8 @@
     <hover_p x="672" y="51" w="29" h=" 31"/>
     <image_fo x="768" y="8" w="704" h="672"/>
     <image_fo_2 x="44" y="954" w="1900" h="1023"/>
+    <hearth x="0" y="543" w="27" h="24"/>
+    <coin x="27" y="543" w="14" h="16"/>
     <credits_1 value="MIT License"/>
     <credits_2 value="Copyright (c) 2019 GuillemSanchez"/>
     <credits_3 value="Permission is hereby granted, free of charge, to any person obtaining a copy

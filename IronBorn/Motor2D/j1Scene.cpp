@@ -237,8 +237,20 @@ bool j1Scene::PostUpdate()
 		int desired = (int)(helper * 180);
 		App->audio->ChangeFxVol(desired);
 	}
-		
+	
+	if (player_lives_t != nullptr)
+	{
+		char lives[30];
+		sprintf(lives, "X %i", player_lives);
+		player_lives_t->ChangeText(lives);
+	}
 
+	if (player_coins_t != nullptr)
+	{
+		char coins[30];
+		sprintf(coins,"X %i", player_coins);
+		player_coins_t->ChangeText(coins);
+	}
 	return ret;
 }
 
@@ -346,6 +358,7 @@ void j1Scene::UI_listener(Ui_element * ele)
 	{
 		DestroyInitialMenu();
 		CreateLVL1();
+		CreateINGAMEui();
 	}
 	if (ele == quit_button && ele->GetState() == ST_PRESSED)
 	{
@@ -570,4 +583,36 @@ void j1Scene::CreateLVL1()
 	current = LVL_1;
 
 	App->manager->Createlvl(current);
+}
+
+void j1Scene::CreateINGAMEui()
+{
+	coin_sprite = App->gui->CreateImage({ 105,20 }, App->gui->coin_sprite);
+	life_sprite = App->gui->CreateImage({ 20,20 }, App->gui->hearth_sprite);
+	player_coins_t = App->gui->CreatenText({ 125,14 }, "X 3", 25);
+	player_lives_t = App->gui->CreatenText({ 55,14 }, "X 3", 25);
+}
+
+void j1Scene::DestroyINGAMEui()
+{
+	if (coin_sprite != nullptr)
+	{
+		coin_sprite->CleanUp();
+		coin_sprite = nullptr;
+	}
+	if (life_sprite != nullptr)
+	{
+		life_sprite->CleanUp();
+		life_sprite = nullptr;
+	}
+	if (player_coins_t != nullptr)
+	{
+		player_coins_t->CleanUp();
+		player_coins_t = nullptr;
+	}
+	if (player_lives_t != nullptr)
+	{
+		player_lives_t->CleanUp();
+		player_lives_t = nullptr;
+	}
 }

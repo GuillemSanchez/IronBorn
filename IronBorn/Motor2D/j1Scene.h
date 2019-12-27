@@ -75,6 +75,10 @@ public:
 
 	void CreateLVL1();
 
+	void CreateINGAMEui();
+
+	void DestroyINGAMEui();
+
 
 private:
 	bool swaping = false;
@@ -131,6 +135,17 @@ private:
 
 	Ui_button* return_button;
 	// Credits ------------------------------------
+
+	//INGAME ui -----------------------------------
+
+	Ui_ntext* player_coins_t;
+	Ui_ntext* player_lives_t;
+
+	Ui_image* coin_sprite;
+	Ui_image* life_sprite;
+
+	Ui_ntext* EXTRA_LIFE;
+	//INGAME ui -----------------------------------
 
 	bool ini_menu = true;
 	bool ini_menu_created;

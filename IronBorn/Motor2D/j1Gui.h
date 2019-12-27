@@ -67,6 +67,8 @@ public:
 	SDL_Rect slidder_p;
 	SDL_Rect image_fo;
 	SDL_Rect image_fo_2 = {44,954,1900,1023};
+	SDL_Rect hearth_sprite;
+	SDL_Rect coin_sprite;
 	p2SString credits_1;
 	p2SString credits_2;
 	p2SString credits_3;

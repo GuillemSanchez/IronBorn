@@ -6,6 +6,7 @@
 #include "j1EntityManager.h"
 #include "j1Collisions.h"
 #include "j1Scene.h"
+#include "j1Audio.h"
 
 
 
@@ -29,6 +30,7 @@ bool Entity_coin::Awake(pugi::xml_node & config)
 	coin_w_h.y = coin.child("coin_w_h").attribute("h").as_int();
 	oculted_pos.x = coin.child("oculted_pos").attribute("x").as_int();
 	oculted_pos.y = coin.child("oculted_pos").attribute("y").as_int();
+	coin_sound = coin.child("fx_collect").attribute("value").as_string();
 
 	pugi::xml_node coin_node = config.child("entity_coin").child("animations");
 
@@ -45,6 +47,7 @@ void Entity_coin::Draw(float dt)
 bool Entity_coin::Start()
 {
 	coin_idle = App->tex->Load("Assets/MonedaD.png");
+	coin_clinck = App->audio->LoadFx(coin_sound.GetString());
 	SDL_Rect colli;
 	colli.x = position.x;
 	colli.y = position.y;
@@ -67,14 +70,15 @@ bool Entity_coin::CleanUp()
 	App->tex->UnLoad(coin_idle);
 	coin_collider->to_delete = true;
 	active = false;
-
+	
 	return true;
 }
 
 void Entity_coin::OnCollision(Collider * coin, Collider * colli)
 {
+	App->audio->PlayFx(coin_clinck);
 	CleanUp();
-
+	
 	App->scene->player_coins += 1;
 	LOG("Player got a coin");
 }

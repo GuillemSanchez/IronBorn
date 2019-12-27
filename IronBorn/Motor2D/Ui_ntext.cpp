@@ -38,6 +38,6 @@ void Ui_ntext::ChangeText(p2SString to_change)
 
 	App->tex->UnLoad(text_tex);
 
-	text_tex = App->font->Print(my_text.GetString());
+	text_tex = App->font->Print(my_text.GetString(), my_color, my_font);
 	
 }
