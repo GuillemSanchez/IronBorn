@@ -135,6 +135,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE."/>
     <credits_6 value="Author: Guillem Sanchez"/>
+    <fx_hover value="audio/fx/Accept.wav"/>
+    <fx_pressed value="audio/fx/Decline.wav"/>
   </gui>
   <file_system>
     <path>data.zip</path>

@@ -12,6 +12,7 @@
 #include "Ui_button.h"
 #include "Ui_slidder.h"
 #include "Ui_input_text.h"
+#include "j1Audio.h"
 
 j1Gui::j1Gui() : j1Module()
 {
@@ -77,6 +78,10 @@ bool j1Gui::Awake(pugi::xml_node& conf)
 	credits_5 = conf.child("credits_5").attribute("value").as_string();
 	credits_6 = conf.child("credits_6").attribute("value").as_string();
 
+
+	on_hover_sound = conf.child("fx_hover").attribute("value").as_string();
+	on_pressed_sound = conf.child("fx_pressed").attribute("value").as_string();
+
 	return ret;
 }
 
@@ -84,6 +89,10 @@ bool j1Gui::Awake(pugi::xml_node& conf)
 bool j1Gui::Start()
 {
 	atlas = App->tex->Load(atlas_file_name.GetString());
+
+	on_hover_fx = App->audio->LoadFx(on_hover_sound.GetString());
+
+	on_pressed_fx = App->audio->LoadFx(on_pressed_sound.GetString());
 
 	return true;
 }
@@ -149,6 +158,10 @@ Ui_image * j1Gui::CreateImage(p2Point<int> pos, SDL_Rect rect)
 	Ui_image* resource = new Ui_image(UIMAGE,pos,false,rect);
 	resource->atlas_tex = atlas;
 
+	resource->hover_fx = on_hover_fx;
+	resource->pressed_fx = on_pressed_fx;
+
+
 	UI_elements.add(resource);
 
 	return resource;
@@ -158,6 +171,9 @@ Ui_ntext * j1Gui::CreatenText(p2Point<int> pos, p2SString text, int font_size, S
 {
 	Ui_ntext* resource = new Ui_ntext(UTEXT, pos, false, text,font_size, _color);
 
+	resource->hover_fx = on_hover_fx;
+	resource->pressed_fx = on_pressed_fx;
+
 	UI_elements.add(resource);
 
 	return resource;
@@ -166,6 +182,10 @@ Ui_ntext * j1Gui::CreatenText(p2Point<int> pos, p2SString text, int font_size, S
 Ui_button * j1Gui::CreateButton(p2Point<int> pos, p2SString text, j1Module* mod, int font_size, SDL_Color _color)
 {
 	Ui_button* resource = new Ui_button(UBUTTON, pos, true, text, mod,font_size,_color);
+
+	resource->hover_fx = on_hover_fx;
+	resource->pressed_fx = on_pressed_fx;
+
 	resource->atlas_tex = atlas;
 
 	UI_elements.add(resource);
@@ -176,6 +196,9 @@ Ui_button * j1Gui::CreateButton(p2Point<int> pos, p2SString text, j1Module* mod,
 Ui_slidder * j1Gui::CreateSlidder(p2Point<int> pos, j1Module * mod, bool horizontal)
 {
 	Ui_slidder* resource = new Ui_slidder(USLIDDER, pos, true, mod, horizontal);
+
+	resource->hover_fx = on_hover_fx;
+	resource->pressed_fx = on_pressed_fx;
 	resource->atlas_tex = atlas;
 
 	UI_elements.add(resource);
@@ -185,6 +208,10 @@ Ui_slidder * j1Gui::CreateSlidder(p2Point<int> pos, j1Module * mod, bool horizon
 Ui_input_text * j1Gui::CreateInputText(p2Point<int> pos, p2SString text, j1Module * mod, int font_size, SDL_Color _color)
 {
 	Ui_input_text* resource = new Ui_input_text(UINPUT_TEXT, pos, true, text, font_size, _color); // gtodo falta hacer el module que lo recive.
+
+	resource->hover_fx = on_hover_fx;
+	resource->pressed_fx = on_pressed_fx;
+
 	resource->atlas_tex = atlas;
 
 	UI_elements.add(resource);

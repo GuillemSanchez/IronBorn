@@ -49,6 +49,7 @@ protected:
 	bool interactable = false;
 	p2List<j1Module*> listeners;
 	
+	
 public:
 	//functions:
 
@@ -70,6 +71,9 @@ public:
 	bool focus = false;
 
 	bool to_delete = false;
+
+	uint hover_fx;
+	uint pressed_fx;
 
 };
 

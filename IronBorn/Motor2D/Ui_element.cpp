@@ -3,6 +3,7 @@
 #include "j1Render.h"
 #include "j1Input.h"
 #include "j1Gui.h"
+#include "j1Audio.h"
 
 void Ui_element::Update()
 {
@@ -16,6 +17,10 @@ void Ui_element::Update()
 		{
 			if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN)
 			{
+				if (mouse_ev != ST_PRESSED)
+				{
+					App->audio->PlayFx(pressed_fx);
+				}
 				mouse_ev = ST_PRESSED;
 				App->gui->Defocus();
 				focus = true;
@@ -27,6 +32,11 @@ void Ui_element::Update()
 			}
 			if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_IDLE)
 			{
+				if (mouse_ev != ST_HOVER)
+				{
+					App->audio->PlayFx(hover_fx);
+				}
+				
 				mouse_ev = ST_HOVER;
 			}
 		}

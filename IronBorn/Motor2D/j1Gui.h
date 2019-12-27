@@ -74,7 +74,11 @@ public:
 	p2SString credits_5;
 	p2SString credits_6;
 
+	p2SString on_hover_sound;
+	p2SString on_pressed_sound;
 
+	uint on_hover_fx;
+	uint on_pressed_fx;
 
 private:
 
