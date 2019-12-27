@@ -86,7 +86,16 @@ bool j1Scene::PreUpdate()
 	}
 	if (player_lives <= 0)
 	{
-		return false;
+		DestroyIGmenu();
+		DestroyINGAMEui();
+		DestroyEverythink();
+		App->manager->InactiveAll();
+		CreateInitalMenu();
+		App->audio->PlayMusic(intro_menu.GetString(), 2);
+		current = LVL_MAX;
+		playingMusic = false;
+		player_coins = 0;
+		player_lives = 3;
 	}
 
 	if (current == LVL_1 && !playingMusic) {
@@ -460,6 +469,8 @@ void j1Scene::UI_listener(Ui_element * ele)
 		App->audio->PlayMusic(intro_menu.GetString(), 2);
 		current = LVL_MAX;
 		playingMusic = false;
+		player_coins = 0;
+		player_lives = 3;
 
 	}
 }
