@@ -90,7 +90,7 @@ public:
 	bool drawing_debug = false;
 private:
 	bool swaping = false;
-
+	uint32 how_much_last_time = 0;
 	int current_lvl = 1;
 	p2SString map_1;
 	p2SString map_2;

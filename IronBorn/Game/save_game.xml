@@ -7,58 +7,58 @@
 	<map />
 	<manager>
 		<player>
-			<player_numbers position_x="313" position_y="627" velocity_x="200" velocity_y="50" acceleration_x="0" acceleration_y="0" stack_x="0" stack_y="0.850000024" />
-			<player_bools jump_ava="true" active="true" />
+			<player_numbers position_x="7" position_y="483" velocity_x="0" velocity_y="250" acceleration_x="0" acceleration_y="0" stack_x="0" stack_y="0" />
+			<player_bools jump_ava="false" active="true" />
 		</player>
 		<Coin_0>
-			<coin_stats position_x="163" position_y="485" />
-			<coin_bools collected_1="false" collected_2="true" />
+			<coin_stats position_x="277" position_y="234" />
+			<coin_bools collected_1="false" collected_2="false" />
 		</Coin_0>
 		<Coin_1>
-			<coin_stats position_x="281" position_y="614" />
-			<coin_bools collected_1="false" collected_2="true" />
+			<coin_stats position_x="635" position_y="158" />
+			<coin_bools collected_1="false" collected_2="false" />
 		</Coin_1>
 		<Coin_2>
-			<coin_stats position_x="502" position_y="539" />
+			<coin_stats position_x="467" position_y="139" />
 			<coin_bools collected_1="false" collected_2="false" />
 		</Coin_2>
 		<Coin_3>
-			<coin_stats position_x="670" position_y="467" />
-			<coin_bools collected_1="true" collected_2="false" />
+			<coin_stats position_x="481" position_y="647" />
+			<coin_bools collected_1="false" collected_2="false" />
 		</Coin_3>
 		<Coin_4>
-			<coin_stats position_x="830" position_y="409" />
-			<coin_bools collected_1="true" collected_2="false" />
+			<coin_stats position_x="129" position_y="634" />
+			<coin_bools collected_1="false" collected_2="false" />
 		</Coin_4>
 		<Coin_5>
-			<coin_stats position_x="996" position_y="392" />
-			<coin_bools collected_1="true" collected_2="false" />
+			<coin_stats position_x="674" position_y="580" />
+			<coin_bools collected_1="false" collected_2="false" />
 		</Coin_5>
 		<Coin_6>
-			<coin_stats position_x="1221" position_y="312" />
+			<coin_stats position_x="876" position_y="587" />
 			<coin_bools collected_1="false" collected_2="false" />
 		</Coin_6>
 		<Coin_7>
-			<coin_stats position_x="1224" position_y="531" />
+			<coin_stats position_x="932" position_y="374" />
 			<coin_bools collected_1="false" collected_2="false" />
 		</Coin_7>
 		<Coin_8>
-			<coin_stats position_x="55" position_y="517" />
-			<coin_bools collected_1="false" collected_2="true" />
+			<coin_stats position_x="1162" position_y="578" />
+			<coin_bools collected_1="false" collected_2="false" />
 		</Coin_8>
 		<Coin_9>
-			<coin_stats position_x="381" position_y="533" />
+			<coin_stats position_x="1203" position_y="375" />
 			<coin_bools collected_1="false" collected_2="false" />
 		</Coin_9>
 	</manager>
 	<fonts />
 	<gui />
 	<scene>
-		<scene_player lvl_current="LVL_2" player_lives="3" player_coins="6" score_t="14406" timer_t="0" />
+		<scene_player lvl_current="LVL_1" player_lives="3" player_coins="0" score_t="9868" timer_t="2187" />
 	</scene>
 	<collisions />
 	<fade />
 	<renderer>
-		<camera x="-13" y="0" />
+		<camera x="0" y="0" />
 	</renderer>
 </game_state>

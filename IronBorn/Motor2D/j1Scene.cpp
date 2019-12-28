@@ -288,6 +288,7 @@ bool j1Scene::PostUpdate()
 		char ttm[70];
 		sprintf(ttm, "Timer: %f", startup_time.ReadSec());
 		timer->ChangeText(ttm);
+		//how_much_last_time = startup_time.ReadSec();
 	}
 
 
@@ -321,7 +322,7 @@ bool j1Scene::Save(pugi::xml_node &node ) const
 	sc.append_attribute("player_coins") = player_coins;
 	
 	sc.append_attribute("score_t") = score_t;
-	sc.append_attribute("timer_t") = timer_t;
+	sc.append_attribute("timer_t") = startup_time.Read();
 
 	return true;
 }
@@ -335,8 +336,11 @@ bool j1Scene::Load(pugi::xml_node &node )
 	player_lives = node.child("scene_player").attribute("player_lives").as_int();
 	player_coins = node.child("scene_player").attribute("player_coins").as_int();
 	score_t = node.child("scene_player").attribute("score_t").as_int();
-	//timer_t = node.child("scene_player").attribute("timer_t").as_int();
+	how_much_last_time = node.child("scene_player").attribute("timer_t").as_uint();
 
+
+
+	
 	p2SString LvL;
 	LvL.create("LVL_1");
 	if (curr == LvL)
@@ -344,8 +348,14 @@ bool j1Scene::Load(pugi::xml_node &node )
 	else
 		current = LVL_2;
 
+	
+
+
+
 	InitialSwap();
 
+	// This should work and i dont have time to see why this doesnt work correctly.
+	startup_time.started_at = (startup_time.Read() - how_much_last_time);
 	return true;
 }
 

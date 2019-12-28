@@ -14,8 +14,9 @@ public:
 	uint32 Read() const;
 	float ReadSec() const;
 
-private:
 	uint32	started_at;
+private:
+
 };
 
 #endif //__j1TIMER_H__
