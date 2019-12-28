@@ -50,7 +50,8 @@ bool j1Input::Start()
 bool j1Input::PreUpdate()
 {
 	static SDL_Event event;
-	
+	scrolling_up = false;
+	scrolling_down = false;
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
 
 	if (editing)
@@ -126,7 +127,18 @@ bool j1Input::PreUpdate()
 				mouse_buttons[event.button.button - 1] = KEY_UP;
 				//LOG("Mouse button %d up", event.button.button-1);
 			break;
-
+			case SDL_MOUSEWHEEL:
+			
+				if (event.wheel.y > 0) // scroll up
+				{
+					scrolling_up = true;
+				}
+				else if (event.wheel.y < 0) // scroll down
+				{
+					scrolling_down = true;
+				}
+			
+			break;
 			case SDL_TEXTINPUT:
 				new_text = event.text.text;
 

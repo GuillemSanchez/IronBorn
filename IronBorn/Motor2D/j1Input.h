@@ -82,6 +82,10 @@ private:
 	Ui_input_text* editor;
 	bool editing = false;
 	char*		new_text;
+public:
+
+	bool scrolling_up;
+	bool scrolling_down;
 };
 
 #endif // __j1INPUT_H__

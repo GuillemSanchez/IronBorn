@@ -64,7 +64,7 @@ public:
 	void Console_write_log(p2SString LOG);
 
 private:
-
+	
 	bool console_opened;
 	p2List<p2SString> logs;
 	p2List<Ui_ntext*> text_logs;

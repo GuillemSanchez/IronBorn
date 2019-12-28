@@ -22,6 +22,7 @@ j1Window::~j1Window()
 bool j1Window::Awake(pugi::xml_node& config)
 {
 	LOG("Init SDL window & surface");
+	App->console->Console_write_log("Init SDL window & surface");
 	bool ret = true;
 
 	if(SDL_Init(SDL_INIT_VIDEO) < 0)

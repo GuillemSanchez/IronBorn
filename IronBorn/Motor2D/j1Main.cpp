@@ -51,11 +51,13 @@ int main(int argc, char* args[])
 			// Awake all modules -----------------------------------------------
 			case AWAKE:
 			LOG("AWAKE PHASE ===============================");
+			App->console->Console_write_log("-AWAKE PHASE ===============================");
 			if(App->Awake() == true)
 				state = START;
 			else
 			{
 				LOG("ERROR: Awake failed");
+				App->console->Console_write_log("-ERROR: Awake failed");
 				state = FAIL;
 			}
 
@@ -64,15 +66,18 @@ int main(int argc, char* args[])
 			// Call all modules before first frame  ----------------------------
 			case START:
 			LOG("START PHASE ===============================");
+			App->console->Console_write_log("-START PHASE ===============================");
 			if(App->Start() == true)
 			{
 				state = LOOP;
 				LOG("UPDATE PHASE ===============================");
+				App->console->Console_write_log("-UPDATE PHASE ===============================");
 			}
 			else
 			{
 				state = FAIL;
 				LOG("ERROR: Start failed");
+				App->console->Console_write_log("-ERROR: Start failed");
 			}
 			break;
 
@@ -85,6 +90,7 @@ int main(int argc, char* args[])
 			// Cleanup allocated memory -----------------------------------------
 			case CLEAN:
 			LOG("CLEANUP PHASE ===============================");
+			App->console->Console_write_log("-CLEANUP PHASE ===============================");
 			if(App->CleanUp() == true)
 			{
 				RELEASE(App);

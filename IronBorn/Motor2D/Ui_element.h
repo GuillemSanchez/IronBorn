@@ -39,7 +39,7 @@ protected:
 	//vars that all have in common.
 	Ky_St mouse_ev = ST_NOTHING;
 	UI_type my_type = UUNKNOW;
-	p2Point<int> my_pos;
+	
 	SDL_Rect inter_zone;
 
 	//If we only have one position we will use this.
@@ -77,7 +77,7 @@ public:
 
 	uint hover_fx;
 	uint pressed_fx;
-
+	p2Point<int> my_pos;
 };
 
 

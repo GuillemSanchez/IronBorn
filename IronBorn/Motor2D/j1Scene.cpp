@@ -19,6 +19,7 @@
 #include "Ui_input_text.h"
 #include "Ui_image.h"
 #include "Ui_slidder.h"
+#include "j1Console.h"
 
 
 j1Scene::j1Scene() : j1Module()
@@ -34,6 +35,7 @@ j1Scene::~j1Scene()
 bool j1Scene::Awake(pugi::xml_node& config)
 {
 	LOG("Loading Scene");
+	App->console->Console_write_log("Loading Scene");
 	bool ret = true;
 
 	map_1.create(config.child("lvl_1").attribute("value").as_string());

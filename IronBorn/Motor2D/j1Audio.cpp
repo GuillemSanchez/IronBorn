@@ -2,6 +2,7 @@
 #include "p2Log.h"
 #include "j1App.h"
 #include "j1Audio.h"
+#include "j1Console.h"
 
 #include "SDL/include/SDL.h"
 #include "SDL_mixer\include\SDL_mixer.h"
@@ -21,12 +22,14 @@ j1Audio::~j1Audio()
 bool j1Audio::Awake(pugi::xml_node& config)
 {
 	LOG("Loading Audio Mixer");
+	App->console->Console_write_log("Loading Audio Mixer");
 	bool ret = true;
 	SDL_Init(0);
 
 	if(SDL_InitSubSystem(SDL_INIT_AUDIO) < 0)
 	{
 		LOG("SDL_INIT_AUDIO could not initialize! SDL_Error: %s\n", SDL_GetError());
+		App->console->Console_write_log("SDL_INIT_AUDIO could not initialize! SDL_Error:");
 		active = false;
 		ret = true;
 	}
@@ -38,6 +41,7 @@ bool j1Audio::Awake(pugi::xml_node& config)
 	if((init & flags) != flags)
 	{
 		LOG("Could not initialize Mixer lib. Mix_Init: %s", Mix_GetError());
+		App->console->Console_write_log("Could not initialize Mixer lib. Mix_Init:");
 		active = false;
 		ret = true;
 	}
@@ -46,6 +50,7 @@ bool j1Audio::Awake(pugi::xml_node& config)
 	if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 	{
 		LOG("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+		App->console->Console_write_log("SDL_mixer could not initialize! SDL_mixer Error:");
 		active = false;
 		ret = true;
 	}
@@ -134,6 +139,7 @@ bool j1Audio::PlayMusic(const char* path, float fade_time)
 	}
 
 	LOG("Successfully playing %s", path);
+	App->console->Console_write_log("Successfully playing");
 	return ret;
 }
 

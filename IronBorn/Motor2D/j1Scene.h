@@ -180,9 +180,9 @@ private:
 	bool settings_menu_created = false;
 
 	bool menu_created = false;
-	bool in_game = false;
+	
 public:
-
+	bool in_game = false;
 	int score_t = 10000;
 	j1Timer	startup_time;
 	int player_lives = 3;
