@@ -141,14 +141,52 @@ bool j1Console::CleanUp()
 	return true;
 }
 
-COMS j1Console::ReturnCommand(const char *)
+COMS j1Console::ReturnCommand(const char *hh)
 {
+	COMS com = max;
+	
+	p2SString tt = hh;
+	p2SString nn = hh;
+
+	for (int i = 1; i <= tt.Length(); i++)
+	{
+		
+		if (hh[i] == '0' || hh[i] == '1' || hh[i] == '2' || hh[i] == '3' || hh[i] == '4' || hh[i] == '5' || hh[i] == '6' || hh[i] == '7' || hh[i] == '8' || hh[i] == '9')
+		{
+			tt.Cut(i-1);
+
+			nn.Cut(0, i-1);
+		}
+	}
+
+	if (strcmp(hh, "/godmode") == 0)
+	{
+		com = God_Mode;
+	}
+	if (strcmp(hh, "/quit") == 0)
+	{
+		com = quit;
+	}
+	if (strcmp(tt.GetString(), "/FPS") == 0)
+	{
+		com = FPS;
+
+		Fp = std::stoi(nn.GetString());
+	}
+	if (strcmp(hh, "/list") == 0)
+	{
+		com = list;
+	}
+	if (strcmp(tt.GetString(), "/map") == 0)
+	{
+		com = map;
+		Ln = std::stoi(nn.GetString());
+	}
 
 
 
 
-
-	return COMS();
+	return com;
 }
 
 void j1Console::ExecuteCommand(COMS)

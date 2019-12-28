@@ -4,6 +4,7 @@
 #include "j1Module.h"
 #include "p2List.h"
 #include "p2DynArray.h"
+#include <string>
 
 
 
@@ -68,6 +69,9 @@ private:
 	p2List<Ui_ntext*> text_logs;
 	p2List<p2SString> comands;
 	int comands_act = 0;
+
+	int Fp;
+	int Ln;
 
 
 };
