@@ -36,7 +36,7 @@ bool j1Console::PreUpdate()
 bool j1Console::Update(float dt)
 {
 
-
+	// The ol' switcherino
 	if (App->input->GetKey(SDL_SCANCODE_GRAVE) == KEY_DOWN && App->scene->in_game)
 	{
 		if (console_opened == false)
@@ -85,13 +85,53 @@ bool j1Console::Update(float dt)
 				}
 			}
 		}
+
+
+		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+		{
+			ReturnCommand(my_input->my_text.GetString());
+				
+			Console_write_log(my_input->my_text.GetString());
+			comands.add(my_input->my_text.GetString());
+			Close_c();
+			Open_c();
+			
+		}
+		// Controlers to console lol;
+		if (comands.count() > 0)
+		{
+			if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN)
+			{
+				comands_act -= 1;
+				if (comands_act <= 0)
+				{
+					comands_act = 0;
+				}
+				my_input->my_text = comands[comands_act];
+			}
+
+			if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)
+			{
+				comands_act += 1;
+				if (comands_act >= comands.count()-1)
+				{
+					comands_act = comands.count()-1;
+				}
+				my_input->my_text = comands[comands_act];
+			}
+		}
+		if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN)
+		{
+			my_input->my_text.Cut(my_input->my_text.Length() - 2, my_input->my_text.Length());
+			LOG("haciendo cosas");
+		}
 	}
 	return true;
 }
 
 bool j1Console::PostUpdate()
 {
-	// The ol' switcherino
+
 
 	return true;
 }
@@ -101,21 +141,26 @@ bool j1Console::CleanUp()
 	return true;
 }
 
+COMS j1Console::ReturnCommand(const char *)
+{
+
+
+
+
+
+	return COMS();
+}
+
+void j1Console::ExecuteCommand(COMS)
+{
+}
+
 void j1Console::Open_c()
 {
-	//InputText = App->gui->CreateGuiElement(Types::inputText, 0, 200, { 488, 569, 344, 61 }, nullptr, this);
-	//InputText->follow = true;
-	//InputText->GetInputText()->SetSingleFocus();
-	/*ConsoleText[0] = App->gui->CreateGuiElement(Types::text, 30, -30, { 0, 0, 0, 0 }, InputText, this, "- ");
-	for (int i = 1; i < MAXTEXT; i++) {
-		ConsoleText[i] = App->gui->CreateGuiElement(Types::text, 0, -i * 20, { 0, 0, 0, 0 }, ConsoleText[0], this, "- ");
-	}*/
+	my_input = App->gui->CreateInputText({ 0,350 }, "Comand", this, 12);
+	App->gui->Defocus();
+	my_input->focus = true;
 
-	/*for (int i = 0; i < logs.count(); i++)
-	{
-		Ui_ntext* helper = App->gui->CreatenText({ 0,10 * i }, logs[i],10);
-		text_logs.add(helper);
-	}*/
 	int h = 0;
 	for (int i = logs.count() - 1; i >= 0; i--)
 	{
@@ -123,15 +168,16 @@ void j1Console::Open_c()
 		text_logs.add(helper);
 		h++;
 	}
-
+	comands_act = comands.count() - 1;
 }
 
 void j1Console::Close_c()
 {
-	for (int i = 0; i < logs.count(); i++)
+	my_input->CleanUp();
+
+	for (int i = 0; i < text_logs.count(); i++)
 	{
 		text_logs[i]->CleanUp();
-		//text_logs[i]->to_delete = true;
 	}
 	text_logs.clear();
 }

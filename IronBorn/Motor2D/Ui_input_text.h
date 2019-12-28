@@ -26,6 +26,7 @@ public:
 
 	void Draw();
 	void PostUpdate();
+	void CleanUp();
 
 public:
 	SDL_Texture* new_text;

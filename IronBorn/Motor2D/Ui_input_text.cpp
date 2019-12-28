@@ -55,3 +55,9 @@ void Ui_input_text::PostUpdate()
 		App->input->SetTextInput(false,this);
 	}
 }
+
+void Ui_input_text::CleanUp()
+{
+	to_delete = true;
+	App->tex->UnLoad(new_text);
+}

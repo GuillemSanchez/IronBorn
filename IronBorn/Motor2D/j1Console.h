@@ -49,13 +49,11 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	//void GuiInput(GuiItem*);
 
-	//void write(const char*);
 
-	//Commands ReturnCommand(const char*);
+	COMS ReturnCommand(const char*);
 
-	//void ExecuteCommand(Commands);
+	void ExecuteCommand(COMS);
 
 	void Open_c();
 
@@ -64,10 +62,14 @@ public:
 	void Console_write_log(p2SString LOG);
 
 private:
-	
+	Ui_input_text* my_input;
 	bool console_opened;
 	p2List<p2SString> logs;
 	p2List<Ui_ntext*> text_logs;
+	p2List<p2SString> comands;
+	int comands_act = 0;
+
+
 };
 
 #endif

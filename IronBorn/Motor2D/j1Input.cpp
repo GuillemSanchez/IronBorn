@@ -4,6 +4,7 @@
 #include "j1Input.h"
 #include "j1Window.h"
 #include "Ui_input_text.h"
+#include "j1Scene.h"
 #include "SDL/include/SDL.h"
 
 #define MAX_KEYS 300
@@ -57,10 +58,12 @@ bool j1Input::PreUpdate()
 	if (editing)
 	{
 		SDL_StartTextInput();
+		//App->scene->pause = true;
 	}
 	else
 	{
 		SDL_StopTextInput();
+		//App->scene->pause = true;
 	}
 
 	for(int i = 0; i < MAX_KEYS; ++i)
@@ -143,6 +146,7 @@ bool j1Input::PreUpdate()
 				new_text = event.text.text;
 
 				editor->my_text += new_text;
+				
 			break;
 
 			case SDL_MOUSEMOTION:
