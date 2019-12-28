@@ -13,6 +13,7 @@
 #include "Ui_slidder.h"
 #include "Ui_input_text.h"
 #include "j1Audio.h"
+#include "j1Console.h"
 
 j1Gui::j1Gui() : j1Module()
 {

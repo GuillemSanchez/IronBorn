@@ -18,6 +18,7 @@
 #include "j1EntityManager.h"
 #include "j1Fonts.h"
 #include "j1Gui.h"
+#include "j1Console.h"
 #include "PugiXml\src\pugixml.hpp"
 
 
@@ -41,6 +42,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	manager = new j1EntityManager();
 	font = new j1Fonts();
 	gui = new j1Gui();
+	console = new j1Console();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -50,12 +52,14 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(audio);
 	AddModule(map);
 	/*AddModule(player);*/
+
 	AddModule(manager);
 	AddModule(font);
 	AddModule(gui);
 	AddModule(scene);
 	AddModule(collisions);
 	AddModule(fade); //temporal? todo
+	AddModule(console);
 
 
 	// render last to swap buffer

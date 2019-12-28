@@ -3,6 +3,7 @@
 #include "j1App.h"
 #include "j1Input.h"
 #include "j1Window.h"
+#include "Ui_input_text.h"
 #include "SDL/include/SDL.h"
 
 #define MAX_KEYS 300
@@ -51,6 +52,15 @@ bool j1Input::PreUpdate()
 	static SDL_Event event;
 	
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
+
+	if (editing)
+	{
+		SDL_StartTextInput();
+	}
+	else
+	{
+		SDL_StopTextInput();
+	}
 
 	for(int i = 0; i < MAX_KEYS; ++i)
 	{
@@ -117,6 +127,12 @@ bool j1Input::PreUpdate()
 				//LOG("Mouse button %d up", event.button.button-1);
 			break;
 
+			case SDL_TEXTINPUT:
+				new_text = event.text.text;
+
+				editor->my_text += new_text;
+			break;
+
 			case SDL_MOUSEMOTION:
 				int scale = App->win->GetScale();
 				mouse_motion_x = event.motion.xrel / scale;
@@ -155,4 +171,22 @@ void j1Input::GetMouseMotion(int& x, int& y)
 {
 	x = mouse_motion_x;
 	y = mouse_motion_y;
+}
+
+void j1Input::SetTextInput(bool active, Ui_input_text * now_editing)
+{
+
+	
+	if (active)
+	{
+		editing = true;
+		editor = now_editing;
+
+	}
+	else
+	{
+		editing = false;
+		editor = nullptr;
+		new_text = nullptr;
+	}
 }

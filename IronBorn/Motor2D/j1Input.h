@@ -8,6 +8,7 @@
 //#define LAST_KEYS_PRESSED_BUFFER 50
 
 struct SDL_Rect;
+class Ui_input_text;
 
 enum j1EventWindow
 {
@@ -68,6 +69,8 @@ public:
 	void GetMousePosition(int &x, int &y);
 	void GetMouseMotion(int& x, int& y);
 
+	void SetTextInput(bool active, Ui_input_text* now_editing);
+
 private:
 	bool		windowEvents[WE_COUNT];
 	j1KeyState*	keyboard;
@@ -76,6 +79,9 @@ private:
 	int			mouse_motion_y;
 	int			mouse_x;
 	int			mouse_y;
+	Ui_input_text* editor;
+	bool editing = false;
+	char*		new_text;
 };
 
 #endif // __j1INPUT_H__

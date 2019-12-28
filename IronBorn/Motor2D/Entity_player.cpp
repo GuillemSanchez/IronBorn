@@ -10,6 +10,7 @@
 #include "j1Scene.h"
 #include "j1Audio.h"
 #include "j1EntityManager.h"
+#include "j1Console.h"
 
 
 

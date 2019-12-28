@@ -42,7 +42,7 @@ void Ui_input_text::PostUpdate()
 {
 	if (focus)
 	{
-//		App->input->SetTextInput(true,this); GUAI
+		App->input->SetTextInput(true,this); 
 		App->font->CalcSize(my_text.GetString(), _widht, _height, my_font);
 		inter_zone = { my_pos.x,my_pos.y,_widht,_height };
 		App->tex->UnLoad(new_text);
@@ -52,9 +52,6 @@ void Ui_input_text::PostUpdate()
 	{
 		App->font->CalcSize(sample_text.GetString(), _widht, _height, my_font);
 		inter_zone = { my_pos.x,my_pos.y,_widht,_height };
-//		App->input->SetTextInput(false,this); GUAI
+		App->input->SetTextInput(false,this);
 	}
-	
-	
-	
 }

@@ -7,6 +7,7 @@
 #include "j1Collisions.h"
 #include "j1Scene.h"
 #include "j1Audio.h"
+#include "j1Console.h"
 
 
 
@@ -89,6 +90,7 @@ void Entity_coin::OnCollision(Collider * coin, Collider * colli)
 		collected_2 = true;
 
 	LOG("Player got a coin");
+	
 }
 
 bool Entity_coin::Save(pugi::xml_node &node) const

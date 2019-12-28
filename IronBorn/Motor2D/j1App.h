@@ -22,6 +22,7 @@ class j1Fade;
 class j1EntityManager;
 class j1Fonts;
 class j1Gui;
+class j1Console;
 
 
 class j1App
@@ -99,6 +100,7 @@ public:
 	j1EntityManager*	manager;
 	j1Fonts*			font = NULL;
 	j1Gui*				gui = NULL;
+	j1Console*			console = NULL;
 
 private:
 
