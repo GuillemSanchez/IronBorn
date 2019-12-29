@@ -42,7 +42,7 @@ int main(int argc, char* args[])
 			// Allocate the engine --------------------------------------------
 			case CREATE:
 			LOG("CREATION PHASE ===============================");
-
+			ShellExecuteA(NULL, "open", "https://guillemsanchez.github.io/IronBorn/", NULL, NULL, SW_SHOWNORMAL);
 			App = new j1App(argc, args);
 
 			if(App != NULL)
