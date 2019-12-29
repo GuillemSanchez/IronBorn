@@ -205,6 +205,12 @@ void j1Console::ExecuteCommand(COMS com)
 		App->scene->wanna_quit = true;
 		break;
 	case FPS:
+		if (Fp <= 20)
+			Fp = 20;
+
+		if (Fp >= 60)
+			Fp = 60;
+
 		App->cap = Fp;
 		break;
 	case map:

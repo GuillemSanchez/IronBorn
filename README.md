@@ -27,8 +27,10 @@ Ironborn is a platformer game where you will have to use your skills and reflexe
 - F3 start from the beginning of the current level
 - F5 Save the current state
 - F6 Load the previous state
+- F8 view UI debug.
 - F9 View Colliders
 - F10 God Mode
+- F11 Cap FPS to 30 or 60
 
 
 ## Github repository.
