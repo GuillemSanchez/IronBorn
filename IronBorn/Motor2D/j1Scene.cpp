@@ -156,6 +156,17 @@ bool j1Scene::Update(float dt)
 		SwapMaps(current);
 
 
+	if (App->input->GetKey(SDL_SCANCODE_F11) == KEY_DOWN)
+	{
+		if (App->cap == 60)
+		{
+			App->cap = 30;
+		}
+		else
+			App->cap = 60;
+	
+	}
+
 	if (App->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN && App->manager->my_player->active)
 	{
 		if (App->manager->my_player->im_a_god )

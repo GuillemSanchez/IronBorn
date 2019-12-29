@@ -41,7 +41,7 @@
         <player_idle value="textures/knight/noBKG_KnightIdle_strip.png"/>
         <player_run value="textures/knight/noBKG_KnightRun_strip.png"/>
         <rolling_velocity value="200"/>
-        <collider_frame value="4"/>
+        <collider_frame value="10"/>
         <animations>
           <idle speed ="10" loop = "true">
             <frame x="23" y="14" width="24" height="30"/>

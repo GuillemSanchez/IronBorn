@@ -88,6 +88,7 @@ public:
 
 	LVL current = LVL_1;
 	bool drawing_debug = false;
+	bool wanna_quit = false;
 private:
 	bool swaping = false;
 	uint32 how_much_last_time = 0;
@@ -102,7 +103,7 @@ private:
 
 	bool playingMusic = false;
 
-	bool wanna_quit = false;
+
 
 
 private:

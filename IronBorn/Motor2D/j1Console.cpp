@@ -7,6 +7,7 @@
 #include "j1Gui.h"
 #include "Ui_ntext.h"
 #include "j1Scene.h"
+#include "j1EntityManager.h"
 
 j1Console::j1Console()
 {
@@ -89,8 +90,10 @@ bool j1Console::Update(float dt)
 
 		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 		{
-			ReturnCommand(my_input->my_text.GetString());
-				
+			COMS comand = ReturnCommand(my_input->my_text.GetString());
+
+			ExecuteCommand(comand);
+
 			Console_write_log(my_input->my_text.GetString());
 			comands.add(my_input->my_text.GetString());
 			Close_c();
@@ -122,6 +125,7 @@ bool j1Console::Update(float dt)
 		}
 		if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN)
 		{
+
 			my_input->my_text.Cut(my_input->my_text.Length() - 2, my_input->my_text.Length());
 			LOG("haciendo cosas");
 		}
@@ -173,7 +177,7 @@ COMS j1Console::ReturnCommand(const char *hh)
 
 		Fp = std::stoi(nn.GetString());
 	}
-	if (strcmp(hh, "/list") == 0)
+	if (strcmp(hh, "/help") == 0)
 	{
 		com = list;
 	}
@@ -189,8 +193,47 @@ COMS j1Console::ReturnCommand(const char *hh)
 	return com;
 }
 
-void j1Console::ExecuteCommand(COMS)
+void j1Console::ExecuteCommand(COMS com)
 {
+	switch (com)
+	{
+	case God_Mode:
+		App->manager->my_player->im_a_god = !App->manager->my_player->im_a_god;
+
+		break;
+	case quit:
+		App->scene->wanna_quit = true;
+		break;
+	case FPS:
+		App->cap = Fp;
+		break;
+	case map:
+		if (Ln == 1)
+		{
+			App->scene->SwapMaps(LVL_1);
+		}
+		if (Ln == 2)
+		{
+			App->scene->SwapMaps(LVL_2);
+		}
+		if (Ln != 1 || Ln != 2)
+		{
+			Console_write_log("Wrong map number.");
+		}
+		break;
+	case list:
+		Console_write_log("List of comands:");
+		Console_write_log("/godmode");
+		Console_write_log("/quit");
+		Console_write_log("/help");
+		Console_write_log("/FPS 'number'");
+		Console_write_log("/map 'number'");
+		break;
+	case max:
+		break;
+	default:
+		break;
+	}
 }
 
 void j1Console::Open_c()

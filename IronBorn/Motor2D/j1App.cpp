@@ -203,6 +203,8 @@ void j1App::FinishUpdate()
 	if(want_to_load == true)
 		LoadGameNow();
 
+	framerate_cap = 1000 / cap;
+
 
 	if (last_sec_frame_time.Read() > 1000)
 	{
@@ -224,8 +226,10 @@ void j1App::FinishUpdate()
 	// TODO 2: Use SDL_Delay to make sure you get your capped framerate
 	uint32 delay = 1000 / 60;
 
-	if (delay > last_frame_ms)
-		SDL_Delay(delay);
+	if (framerate_cap > 0 && last_frame_ms < framerate_cap)
+	{
+		SDL_Delay(framerate_cap - last_frame_ms);
+	}
 
 	// TODO3: Measure accurately the amount of time it SDL_Delay actually waits compared to what was expected
 }

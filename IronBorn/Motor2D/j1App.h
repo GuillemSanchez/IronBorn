@@ -102,6 +102,8 @@ public:
 	j1Gui*				gui = NULL;
 	j1Console*			console = NULL;
 
+	int					cap = 60;
+
 private:
 
 	p2List<j1Module*>	modules;
@@ -127,7 +129,7 @@ private:
 	j1Timer				last_sec_frame_time;
 	uint32				last_sec_frame_count = 0;
 	uint32				prev_last_sec_frame_count = 0;
-	uint				frame_rate;
+	uint				framerate_cap;
 };
 
 extern j1App* App;
