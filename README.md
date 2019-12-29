@@ -32,6 +32,21 @@ Ironborn is a platformer game where you will have to use your skills and reflexe
 - F10 God Mode
 - F11 Cap FPS to 30 or 60
 
+### More information:
+
+Console:
+
+- You can open/close the console with º
+- Hitting enter you execute the comand
+-"inovation" Arrows cycle through all the previously sent commants.
+
+List of comands:
+
+/godmode - actives/des the god state.
+/help 	 - Shows all the comands.
+/quit 	 - Closes the game.
+/FPS "number" - Changes the fps cap.
+/map "number" - Changes to the desired map.
 
 ## Github repository.
 
@@ -76,5 +91,4 @@ https://oco.itch.io/medieval-fantasy-character-pack
 ## Testers:
 
 Diego Muñoz, Ricard Codina, Ricard Riven, Laura Aguilar.
-
 
