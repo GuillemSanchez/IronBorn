@@ -91,4 +91,3 @@ https://oco.itch.io/medieval-fantasy-character-pack
 ## Testers:
 
 Diego Muñoz, Ricard Codina, Ricard Riven, Laura Aguilar.
-
