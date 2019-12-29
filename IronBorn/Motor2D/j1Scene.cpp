@@ -240,7 +240,11 @@ bool j1Scene::Update(float dt)
 bool j1Scene::PostUpdate()
 {
 	BROFILER_CATEGORY("SCENE POSTUPDATE", Profiler::Color::Black);
-
+	if (player_coins >= 10)
+	{
+		player_coins = 0;
+		player_lives += 1;
+	}
 	bool ret = true;
 
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
