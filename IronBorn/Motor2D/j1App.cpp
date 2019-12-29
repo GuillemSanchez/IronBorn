@@ -13,7 +13,7 @@
 #include "j1Map.h"
 #include "j1Collisions.h"
 #include "j1Fade.h"
-#include "j1Player.h"
+
 #include "j1App.h"
 #include "j1EntityManager.h"
 #include "j1Fonts.h"

@@ -4,7 +4,7 @@
 #include "j1Collisions.h"
 #include "p2Defs.h"
 #include "p2Log.h"
-#include "j1Player.h"
+
 #include "j1EntityManager.h"
 
 j1Collisions::j1Collisions()
