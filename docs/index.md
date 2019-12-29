@@ -11,8 +11,11 @@ This game was developed for a college Project (Game development) i hope you like
 ## Team:
 
 Guillem Sanchez
-(link)
-(photo)
+
+<img src="https://github.com/GuillemSanchez/IronBorn/blob/master/docs/photo/Guillem.jpg?raw=true">
+
+
+
 
 ### Work Done:
 
@@ -23,6 +26,8 @@ The player controls and physics.
 The Ui scroll bar.
 
 The Console.
+
+<video src="https://github.com/GuillemSanchez/IronBorn/blob/master/docs/video/Dev_final.mp4">
 
 ## Core and Subsystems:
 
