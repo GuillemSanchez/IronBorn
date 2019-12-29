@@ -8,6 +8,9 @@ Hi everyone im Guillem Sanchez Herranz a college student from CITM/UPC.
 This is ironborn, a game where you will play as a hero that will have to sort some obstacles to get to the enemie castle.
 This game was developed for a college Project (Game development) i hope you like it.
 
+<video src="video/Dev_final.mp4.mp4" width="512" height="384" controls preload></video>
+
+
 ## Team:
 
 Guillem Sanchez
@@ -27,7 +30,7 @@ The Ui scroll bar.
 
 The Console.
 
-<video src="https://github.com/GuillemSanchez/IronBorn/blob/master/docs/video/Dev_final.mp4">
+
 
 ## Core and Subsystems:
 
