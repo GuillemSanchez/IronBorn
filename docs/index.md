@@ -9,11 +9,11 @@ This is ironborn, a game where you will play as a hero that will have to sort so
 This game was developed for a college Project (Game development) i hope you like it.
 
 1
-<video src="docs/video/Dev_final.mp4.mp4" width="512" height="384" controls preload></video>
+<video src="docs/video/Dev_final.mp4" width="512" height="384" controls preload></video>
 este
 <video src="https://github.com/GuillemSanchez/IronBorn/blob/master/docs/video/Dev_final.mp4" width="512" height="384" controls preload></video>
 este 3
-<video src="video/Dev_final.mp4.mp4" width="512" height="384" controls preload></video>
+<video src="video/Dev_final.mp4" width="512" height="384" controls preload></video>
 
 
 ## Team:
