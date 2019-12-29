@@ -99,6 +99,7 @@ bool j1Gui::Awake(pugi::xml_node& conf)
 // Called before the first frame
 bool j1Gui::Start()
 {
+	BROFILER_CATEGORY("UI START", Profiler::Color::Brown);
 	atlas = App->tex->Load(atlas_file_name.GetString());
 
 	on_hover_fx = App->audio->LoadFx(on_hover_sound.GetString());
@@ -111,13 +112,15 @@ bool j1Gui::Start()
 // Update all guis
 bool j1Gui::PreUpdate()
 {
-	
+	BROFILER_CATEGORY("UI PREUPDATE", Profiler::Color::Brown);
 	return true;
 }
 
 // Called after all Updates
 bool j1Gui::PostUpdate()
 {
+	BROFILER_CATEGORY("UI POSTUPDATE", Profiler::Color::Brown);
+
 	for (int i = 0; i < UI_elements.count(); i++)
 	{
 		if (UI_elements[i] == nullptr)

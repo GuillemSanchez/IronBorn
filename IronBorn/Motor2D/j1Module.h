@@ -8,6 +8,7 @@
 
 #include "p2SString.h"
 #include "PugiXml\src\pugixml.hpp"
+#include "brofiler/Brofiler/Brofiler.h"
 
 class j1App;
 struct Collider;

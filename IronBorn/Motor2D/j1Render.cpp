@@ -63,17 +63,20 @@ bool j1Render::Start()
 // Called each loop iteration
 bool j1Render::PreUpdate()
 {
+	BROFILER_CATEGORY("RENDER PREUPDATE", Profiler::Color::AliceBlue);
 	SDL_RenderClear(renderer);
 	return true;
 }
 
 bool j1Render::Update(float dt)
 {
+	BROFILER_CATEGORY("RENDER UPDATE", Profiler::Color::AliceBlue);
 	return true;
 }
 
 bool j1Render::PostUpdate()
 {
+	BROFILER_CATEGORY("RENDER POSTUPDATE", Profiler::Color::AliceBlue);
 	SDL_SetRenderDrawColor(renderer, background.r, background.g, background.g, background.a);
 	SDL_RenderPresent(renderer);
 	return true;
@@ -125,6 +128,8 @@ void j1Render::ResetViewPort()
 // Blit to screen
 bool j1Render::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section, float speed,bool flipx, double angle, int pivot_x, int pivot_y) const
 {
+
+
 	bool ret = true;
 	float scale = App->win->GetScale();
 	

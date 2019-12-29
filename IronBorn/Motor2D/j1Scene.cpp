@@ -67,6 +67,8 @@ bool j1Scene::Start()
 // Called each loop iteration
 bool j1Scene::PreUpdate()
 {
+	BROFILER_CATEGORY("SCENE PREUPDATE", Profiler::Color::Black);
+
 	if (swaping && App->fade->mid)
 	{
 		App->map->CleanUp();
@@ -128,6 +130,8 @@ bool j1Scene::PreUpdate()
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
+	BROFILER_CATEGORY("SCENE UPDATE", Profiler::Color::Black);
+
 	if(App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 		App->LoadGame("save_game.xml");
 
@@ -235,6 +239,8 @@ bool j1Scene::Update(float dt)
 // Called each loop iteration
 bool j1Scene::PostUpdate()
 {
+	BROFILER_CATEGORY("SCENE POSTUPDATE", Profiler::Color::Black);
+
 	bool ret = true;
 
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
